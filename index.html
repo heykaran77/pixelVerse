@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelVerse - Retro Pixel Art Collectibles</title>
+    <script>
+      // Theme initialization script
+      (function () {
+        if (typeof window !== "undefined") {
+          const stored = localStorage.getItem("theme");
+          if (
+            stored === "dark" ||
+            (!stored &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches)
+          ) {
+            document.documentElement.classList.add("dark");
+          }
+        }
+      })();
+    </script>
+  </head>
+  <style>
+    @font-face {
+      font-family: "OffBit";
+      src: url("/fonts/OffBit-101.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "OffBit";
+      src: url("/fonts/OffBit-101Bold.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    body {
+      font-family: "OffBit", sans-serif;
+      font-weight: 500;
+    }
+  </style>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

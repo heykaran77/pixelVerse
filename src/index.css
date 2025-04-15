@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --card-bg: #f0e6d3; /* Warm cream for light mode */
+}
+
+.dark {
+  --card-bg: #2c2137; /* Deep purple-grey for dark mode */
+}
+
+@layer base {
+  body {
+    @apply tracking-wide;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-wider;
+  }
+
+  .text-xs,
+  .text-sm {
+    @apply tracking-wider;
+  }
+
+  .text-lg,
+  .text-xl,
+  .text-2xl {
+    @apply tracking-wide;
+  }
+
+  .text-3xl,
+  .text-4xl,
+  .text-5xl,
+  .text-6xl {
+    @apply tracking-normal;
+  }
+}
+
+@layer components {
+  /* Base pixel border style */
+  .pixel-borders {
+    @apply relative transition-all duration-200;
+    clip-path: polygon(
+      0 8px,
+      4px 8px,
+      4px 4px,
+      8px 4px,
+      8px 0,
+      calc(100% - 8px) 0,
+      calc(100% - 8px) 4px,
+      calc(100% - 4px) 4px,
+      calc(100% - 4px) 8px,
+      100% 8px,
+      100% calc(100% - 8px),
+      calc(100% - 4px) calc(100% - 8px),
+      calc(100% - 4px) calc(100% - 4px),
+      calc(100% - 8px) calc(100% - 4px),
+      calc(100% - 8px) 100%,
+      8px 100%,
+      8px calc(100% - 4px),
+      4px calc(100% - 4px),
+      4px calc(100% - 8px),
+      0 calc(100% - 8px)
+    );
+  }
+
+  /* Primary variant (previously pink) */
+  .pixel-borders-primary {
+    @apply bg-light-primary dark:bg-dark-primary text-black dark:text-black tracking-wider;
+    box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.25);
+  }
+
+  .pixel-borders-primary:hover {
+    @apply -translate-y-1 translate-x-0.5 scale-105;
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.15);
+  }
+
+  .pixel-borders-primary:active {
+    @apply translate-y-0.5 translate-x-0 scale-95;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+  }
+
+  /* Secondary variant (previously blue) */
+  .pixel-borders-secondary {
+    @apply bg-[#0c0c0c] text-[#f5f5f5] tracking-wider;
+    box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.25);
+    background-color: #f5f5f5;
+    color: #0c0c0c;
+  }
+
+  .pixel-borders-secondary:hover {
+    @apply -translate-y-1 translate-x-0.5 scale-105;
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.15);
+    background-color: #e5e5e5;
+  }
+
+  .pixel-borders-secondary:active {
+    @apply translate-y-0.5 translate-x-0 scale-95;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+    background-color: #d5d5d5;
+  }
+
+  .dark .pixel-borders-secondary {
+    background-color: #0c0c0c;
+    color: #f5f5f5;
+  }
+
+  .dark .pixel-borders-secondary:hover {
+    background-color: #1a1a1a;
+  }
+
+  .dark .pixel-borders-secondary:active {
+    background-color: #262626;
+  }
+
+  .image-pixelated {
+    image-rendering: pixelated;
+  }
+
+  /* Featured artwork card */
+  .featured-card {
+    @apply relative transition-all duration-200;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.05)
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    clip-path: polygon(
+      0 8px,
+      4px 8px,
+      4px 4px,
+      8px 4px,
+      8px 0,
+      calc(100% - 8px) 0,
+      calc(100% - 8px) 4px,
+      calc(100% - 4px) 4px,
+      calc(100% - 4px) 8px,
+      100% 8px,
+      100% calc(100% - 8px),
+      calc(100% - 4px) calc(100% - 8px),
+      calc(100% - 4px) calc(100% - 4px),
+      calc(100% - 8px) calc(100% - 4px),
+      calc(100% - 8px) 100%,
+      8px 100%,
+      8px calc(100% - 4px),
+      4px calc(100% - 4px),
+      4px calc(100% - 8px),
+      0 calc(100% - 8px)
+    );
+  }
+
+  .dark .featured-card {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.05)
+    );
+  }
+
+  .featured-card:hover {
+    @apply -translate-y-1 translate-x-0.5 scale-[1.02];
+    box-shadow: 0 12px 36px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  /* Footer styling */
+  .site-footer {
+    @apply py-8;
+    background-color: #0c0c0c;
+  }
+
+  .site-footer p {
+    color: #f5f5f5;
+  }
+
+  .dark .site-footer {
+    background-color: #faff00;
+  }
+
+  .dark .site-footer p {
+    color: #0c0c0c;
+  }
+
+  /* Rarity pill styling */
+  .rarity-pill {
+    @apply inline-block px-2.5 py-1 text-xs font-medium text-white;
+    clip-path: polygon(
+      0 8px,
+      4px 8px,
+      4px 4px,
+      8px 4px,
+      8px 0,
+      calc(100% - 8px) 0,
+      calc(100% - 8px) 4px,
+      calc(100% - 4px) 4px,
+      calc(100% - 4px) 8px,
+      100% 8px,
+      100% calc(100% - 8px),
+      calc(100% - 4px) calc(100% - 8px),
+      calc(100% - 4px) calc(100% - 4px),
+      calc(100% - 8px) calc(100% - 4px),
+      calc(100% - 8px) 100%,
+      8px 100%,
+      8px calc(100% - 4px),
+      4px calc(100% - 4px),
+      4px calc(100% - 8px),
+      0 calc(100% - 8px)
+    );
+    transition: all 0.3s ease-in-out;
+    border: none;
+    outline: none;
+  }
+
+  .featured-card:hover .rarity-pill {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8))
+      drop-shadow(0 0 30px rgba(255, 255, 255, 0.6))
+      drop-shadow(0 0 40px rgba(255, 255, 255, 0.4));
+    transform: scale(1.05);
+  }
+
+  .featured-card .rarity-pill {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+  }
+
+  /* Image shine effect */
+  .image-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .image-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    z-index: 2;
+    display: block;
+    width: 35%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.9) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-15deg);
+    transition: none;
+    pointer-events: none;
+    opacity: 0.2;
+  }
+
+  .featured-card:hover .image-container::before {
+    animation: shine 0.75s ease-out;
+  }
+
+  @keyframes shine {
+    100% {
+      left: 125%;
+    }
+  }
+}
+
+@layer utilities {
+  .image-pixelated {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+}
