@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import oceanBg from "./assets/gifs/ocean.png";
 import mapLandingGif from "./assets/gifs/map_landing 01.gif";
+import mapLanding03Gif from "./assets/gifs/map_landing 03.gif";
+import mapLanding05Gif from "./assets/gifs/map_landing 05.gif";
 import cloudsImg from "./assets/gifs/clouds.png";
+import cloudsTopImg from "./assets/gifs/clouds_top.png";
 
 // Import character images
 import Garth from "./assets/Characters/Garth.png";
@@ -86,13 +89,28 @@ const Home = () => (
           </div>
         </div>
       </div>
+
+      {/* Bottom Cloud Frame */}
+      <div
+        className="absolute bottom-0 left-0 w-full pointer-events-none"
+        style={{ zIndex: 10 }}
+      >
+        <img
+          src={cloudsTopImg}
+          alt="Bottom Cloud Frame"
+          className="w-full"
+          style={{
+            imageRendering: "pixelated",
+          }}
+        />
+      </div>
     </header>
 
     {/* Guide Section - Full Width */}
-    <section className="relative overflow-hidden w-screen -mx-4 sm:-mx-6 lg:-mx-8">
-      {/* Ocean Background */}
+    <section className="relative w-full h-[100vh] overflow-hidden">
+      {/* Ocean Background - Desktop Only */}
       <div
-        className="absolute inset-0 w-full h-full z-0"
+        className="absolute inset-0 w-full h-full hidden lg:block"
         style={{
           backgroundImage: `url(${oceanBg})`,
           backgroundRepeat: "repeat",
@@ -101,8 +119,32 @@ const Home = () => (
         }}
       />
 
+      {/* Mobile Background */}
+      <div className="absolute inset-0 w-full h-full lg:hidden">
+        <img
+          src={mapLanding05Gif}
+          alt="Mobile Background"
+          className="w-full h-full object-cover"
+          style={{
+            imageRendering: "pixelated",
+          }}
+        />
+      </div>
+
+      {/* Left Side Map GIF - Desktop Only */}
+      <div className="hidden lg:block absolute left-0 h-full z-20">
+        <img
+          src={mapLanding03Gif}
+          alt="Map Animation"
+          className="h-full w-auto"
+          style={{
+            imageRendering: "pixelated",
+          }}
+        />
+      </div>
+
       {/* Map Timeline Container */}
-      <div className="relative z-10 w-full h-[80vh] flex items-center justify-center">
+      <div className="relative w-full h-full flex items-center justify-center">
         {/* Desktop Map Timeline */}
         <div className="hidden lg:block w-full h-full">
           <div className="relative w-full h-full max-w-[1000px] mx-auto flex items-center">
@@ -261,43 +303,64 @@ const Home = () => (
         </div>
       </div>
 
-      {/* Clouds Overlay */}
-      <div className="absolute inset-0 w-full h-full z-50">
-        <picture>
-          <source
-            media="(max-width: 768px)"
-            srcSet={cloudsImg}
-            className="w-full h-full"
-            style={{
-              objectFit: "cover",
-              width: "100%",
-              height: "100%",
-            }}
-          />
+      {/* Cloud Overlay - Between section and navbar */}
+      <div
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{ zIndex: 40 }}
+      >
+        {/* Mobile cloud */}
+        <div className="lg:hidden absolute inset-0 flex items-center justify-center overflow-hidden">
+          <div className="relative h-full flex items-center">
+            <img
+              src={cloudsImg}
+              alt="Cloud Frame Mobile"
+              style={{
+                height: "100%",
+                width: "auto",
+                maxWidth: "none",
+                imageRendering: "pixelated",
+                objectFit: "contain",
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Desktop cloud */}
+        <div className="hidden lg:block w-full h-full">
           <img
             src={cloudsImg}
-            alt="Clouds"
-            className="w-full h-full"
+            alt="Cloud Frame Desktop"
+            className="absolute top-0 left-0 w-full h-full"
             style={{
-              objectFit: "cover",
-              width: "100vw",
-              height: "100%",
+              objectFit: "fill",
               imageRendering: "pixelated",
-              position: "absolute",
-              left: "50%",
-              transform: "translateX(-50%)",
-              maxWidth: "none",
             }}
           />
-        </picture>
+        </div>
       </div>
     </section>
 
     {/* Main Content */}
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-48 relative">
+      {/* Cloud Top Frame */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none"
+        style={{ zIndex: 10 }}
+      >
+        <img
+          src={cloudsTopImg}
+          alt="Cloud Frame"
+          className="w-full"
+          style={{
+            imageRendering: "pixelated",
+            transform: "rotate(180deg)",
+          }}
+        />
+      </div>
+
       <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
-          The Legendary Collection
+        <h2 className="text-5xl lg:text-6xl font-bold mb-8 text-gray-900 dark:text-white">
+          The PixaArt Collection
         </h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {[
