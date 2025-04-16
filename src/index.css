@@ -2,8 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font declarations */
+@font-face {
+  font-family: "OffBit";
+  src: url("/fonts/OffBit-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OffBit-101";
+  src: url("/fonts/OffBit-101.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OffBit-101Bold";
+  src: url("/fonts/OffBit-101Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --card-bg: #f0e6d3; /* Warm cream for light mode */
+  font-family: "OffBit", system-ui, -apple-system, sans-serif;
 }
 
 .dark {
@@ -13,6 +39,7 @@
 @layer base {
   body {
     @apply tracking-wide;
+    font-family: "OffBit", system-ui, -apple-system, sans-serif;
   }
 
   h1,
@@ -22,11 +49,13 @@
   h5,
   h6 {
     @apply tracking-wider;
+    font-family: "OffBit-101Bold", system-ui, -apple-system, sans-serif;
   }
 
   .text-xs,
   .text-sm {
     @apply tracking-wider;
+    font-family: "OffBit-101", system-ui, -apple-system, sans-serif;
   }
 
   .text-lg,
