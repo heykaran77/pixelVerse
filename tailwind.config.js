@@ -27,7 +27,7 @@ export default {
         },
         // Light theme colors
         light: {
-          bg: "#f5e6d3", // cream color
+          bg: "#fff5e6", // warm cream color
           section: "#ffe8d6",
           text: "#1c1c1c",
           muted: "#4b4b4b",

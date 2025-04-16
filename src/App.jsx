@@ -690,7 +690,7 @@ function App() {
   return (
     <Router>
       <div className={darkMode ? "dark" : ""}>
-        <div className="min-h-screen bg-[#f5f5f5] dark:bg-[#0c0c0c] overflow-x-hidden">
+        <div className="min-h-screen bg-light-bg dark:bg-[#0c0c0c] overflow-x-hidden">
           <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
           <Routes>
             <Route path="/" element={<Home />} />
