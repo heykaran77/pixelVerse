@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import oceanBg from "./assets/gifs/ocean.png";
@@ -14,6 +14,10 @@ import DiamondSword from "./assets/gifs/Weapons/Diamond Sword.gif";
 import AngelAxe from "./assets/gifs/Weapons/Angel Axe.gif";
 import NebulaSword from "./assets/gifs/Weapons/Nebula Sword.gif";
 import SpellBook from "./assets/gifs/Weapons/Spell Bookl.gif";
+import PixaPistol from "./assets/gifs/Weapons/Pixa Pistol.gif";
+import PixaGold from "./assets/gifs/Weapons/Pixa Gold.gif";
+import PixaDiamond from "./assets/gifs/Weapons/Pixa Diamond.gif";
+import CyberBlade from "./assets/gifs/Weapons/3dgifmaker76693.gif";
 
 // Import character images
 import Garth from "./assets/Characters/Garth.png";
@@ -31,6 +35,23 @@ import Char6 from "./assets/Characters/6.png";
 import Char13 from "./assets/Characters/13.gif";
 import Char67 from "./assets/Characters/67.png";
 import Char378 from "./assets/Characters/378.png";
+import Bert from "./assets/Characters/Bert.png";
+import Betty from "./assets/Characters/Betty.png";
+import BirdieSpringBlossom from "./assets/Characters/Birdie_Spring_Blossom.png";
+import Blacksmith from "./assets/Characters/Blacksmith.png";
+import Corale from "./assets/Characters/Corale.png";
+import Cornwell from "./assets/Characters/Cornwell.png";
+import Finley from "./assets/Characters/Finley.png";
+import Finn from "./assets/Characters/Finn.png";
+import Goldtooth from "./assets/Characters/Goldtooth.png";
+import Hank from "./assets/Characters/Hank.png";
+import Miranda from "./assets/Characters/Miranda.png";
+import PumpkingPete from "./assets/Characters/Pumpking_Pete.png";
+import Raven from "./assets/Characters/Raven.png";
+import Stella from "./assets/Characters/Stella.png";
+import Tango from "./assets/Characters/Tango.png";
+import Timmy from "./assets/Characters/Timmy.png";
+import Tywin from "./assets/Characters/Tywin.png";
 
 // Shuffle and prepare cards data
 const allCards = [
@@ -211,6 +232,195 @@ const allCards = [
     name: "Spell Book",
     tags: ["pixaWeapon"],
   },
+  {
+    id: 20,
+    rarity: "Very Rare",
+    price: "1.8",
+    tagColor: "from-purple-500/50 to-purple-600/50",
+    image: Bert,
+    name: "Bert",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 21,
+    rarity: "Rare",
+    price: "0.7",
+    tagColor: "from-blue-500/50 to-blue-600/50",
+    image: Betty,
+    name: "Betty",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 22,
+    rarity: "Legendary",
+    price: "3.5",
+    tagColor: "from-yellow-500/50 to-yellow-600/50",
+    image: BirdieSpringBlossom,
+    name: "Birdie Spring Blossom",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 23,
+    rarity: "Very Rare",
+    price: "2.1",
+    tagColor: "from-purple-500/50 to-purple-600/50",
+    image: Blacksmith,
+    name: "Blacksmith",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 24,
+    rarity: "Legendary",
+    price: "4.2",
+    tagColor: "from-yellow-500/50 to-yellow-600/50",
+    image: Corale,
+    name: "Corale",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 25,
+    rarity: "Rare",
+    price: "0.9",
+    tagColor: "from-blue-500/50 to-blue-600/50",
+    image: Cornwell,
+    name: "Cornwell",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 26,
+    rarity: "Very Rare",
+    price: "1.6",
+    tagColor: "from-purple-500/50 to-purple-600/50",
+    image: Finley,
+    name: "Finley",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 27,
+    rarity: "Trending",
+    price: "1.1",
+    tagColor: "from-orange-500/50 to-orange-600/50",
+    image: Finn,
+    name: "Finn",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 28,
+    rarity: "Legendary",
+    price: "3.8",
+    tagColor: "from-yellow-500/50 to-yellow-600/50",
+    image: Goldtooth,
+    name: "Goldtooth",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 29,
+    rarity: "Common",
+    price: "0.4",
+    tagColor: "from-gray-500/50 to-gray-600/50",
+    image: Hank,
+    name: "Hank",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 30,
+    rarity: "Very Rare",
+    price: "2.3",
+    tagColor: "from-purple-500/50 to-purple-600/50",
+    image: Miranda,
+    name: "Miranda",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 31,
+    rarity: "Legendary",
+    price: "4.7",
+    tagColor: "from-yellow-500/50 to-yellow-600/50",
+    image: PumpkingPete,
+    name: "Pumpking Pete",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 32,
+    rarity: "Very Rare",
+    price: "2.0",
+    tagColor: "from-purple-500/50 to-purple-600/50",
+    image: Raven,
+    name: "Raven",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 33,
+    rarity: "Trending",
+    price: "1.4",
+    tagColor: "from-orange-500/50 to-orange-600/50",
+    image: Stella,
+    name: "Stella",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 34,
+    rarity: "Rare",
+    price: "0.8",
+    tagColor: "from-blue-500/50 to-blue-600/50",
+    image: Tango,
+    name: "Tango",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 35,
+    rarity: "Common",
+    price: "0.3",
+    tagColor: "from-gray-500/50 to-gray-600/50",
+    image: Timmy,
+    name: "Timmy",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 36,
+    rarity: "Legendary",
+    price: "3.9",
+    tagColor: "from-yellow-500/50 to-yellow-600/50",
+    image: Tywin,
+    name: "Tywin",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 37,
+    rarity: "Very Rare",
+    price: "2.4",
+    tagColor: "from-purple-500/50 to-purple-600/50",
+    image: PixaPistol,
+    name: "Pixa Pistol",
+    tags: ["pixaWeapon"],
+  },
+  {
+    id: 38,
+    rarity: "Legendary",
+    price: "4.2",
+    tagColor: "from-yellow-500/50 to-yellow-600/50",
+    image: PixaGold,
+    name: "Pixa Gold",
+    tags: ["pixaWeapon"],
+  },
+  {
+    id: 39,
+    rarity: "Legendary",
+    price: "5.5",
+    tagColor: "from-yellow-500/50 to-yellow-600/50",
+    image: PixaDiamond,
+    name: "Pixa Diamond",
+    tags: ["pixaWeapon"],
+  },
+  {
+    id: 40,
+    rarity: "Very Rare",
+    price: "2.9",
+    tagColor: "from-purple-500/50 to-purple-600/50",
+    image: CyberBlade,
+    name: "Cyber Blade",
+    tags: ["pixaWeapon"],
+  },
 ].sort(() => Math.random() - 0.5);
 
 // Placeholder components for routes
@@ -236,6 +446,7 @@ const Marketplace = () => {
   const [priceRange, setPriceRange] = useState({ min: 0, max: 5 });
   const [selectedRarities, setSelectedRarities] = useState([]);
   const [sortOption, setSortOption] = useState("default");
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   // Get unique rarities from allCards
   const rarities = [...new Set(allCards.map((card) => card.rarity))];
@@ -278,11 +489,26 @@ const Marketplace = () => {
         case "price-high-low":
           return parseFloat(b.price) - parseFloat(a.price);
         case "rarity":
-          return rarities.indexOf(a.rarity) - rarities.indexOf(b.rarity);
+          const rarityOrder = [
+            "Common",
+            "Rare",
+            "Trending",
+            "Very Rare",
+            "Legendary",
+          ];
+          return rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity);
         default:
           return 0;
       }
     });
+
+  // Active filters count
+  const activeFiltersCount = [
+    selectedFilter !== "all",
+    selectedRarities.length > 0,
+    priceRange.min > 0 || priceRange.max < 5,
+    sortOption !== "default",
+  ].filter(Boolean).length;
 
   return (
     <div className="container mx-auto px-4 pt-32 pb-16">
@@ -292,23 +518,74 @@ const Marketplace = () => {
         </h1>
       </div>
 
+      {/* Mobile Filter Toggle */}
+      <div className="md:hidden mb-6">
+        <button
+          onClick={() => setIsFilterOpen(!isFilterOpen)}
+          className="w-full pixel-borders pixel-borders-primary px-4 py-3 flex justify-between items-center"
+        >
+          <span className="flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z"
+              />
+            </svg>
+            Filters
+            {activeFiltersCount > 0 && (
+              <span className="ml-2 px-2 py-1 bg-light-primary dark:bg-dark-primary text-white rounded-full text-sm">
+                {activeFiltersCount}
+              </span>
+            )}
+          </span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className={`w-6 h-6 transform transition-transform ${
+              isFilterOpen ? "rotate-180" : ""
+            }`}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m19.5 8.25-7.5 7.5-7.5-7.5"
+            />
+          </svg>
+        </button>
+      </div>
+
       {/* Filters Section */}
       <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 mb-8">
         {/* Filters Sidebar */}
-        <div className="bg-[#0c0c0c] dark:bg-gray-800 p-6 rounded-lg">
-          <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text">
+        <div
+          className={`${
+            isFilterOpen ? "block" : "hidden"
+          } md:block bg-white dark:bg-[#0c0c0c] p-6 rounded-lg sticky top-24`}
+        >
+          <h2 className="text-xl font-bold mb-4 text-[#0c0c0c] dark:text-[#f5e6d3]">
             Filters
           </h2>
 
           {/* Collection Filter */}
           <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-3 text-light-text dark:text-dark-text">
+            <h3 className="text-lg font-semibold mb-3 text-[#0c0c0c] dark:text-[#f5e6d3]">
               Collection
             </h3>
             <select
               value={selectedFilter}
               onChange={(e) => setSelectedFilter(e.target.value)}
-              className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
+              className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 text-[#0c0c0c] dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
             >
               <option value="all">All Items</option>
               <option value="pixaChar">Characters</option>
@@ -319,7 +596,7 @@ const Marketplace = () => {
 
           {/* Price Range Filter */}
           <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-3 text-light-text dark:text-dark-text">
+            <h3 className="text-lg font-semibold mb-3 text-[#0c0c0c] dark:text-[#f5e6d3]">
               Price Range (ETH)
             </h3>
             <div className="flex gap-4">
@@ -334,7 +611,7 @@ const Marketplace = () => {
                     min: parseFloat(e.target.value),
                   }))
                 }
-                className="w-full px-3 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary"
+                className="w-full px-3 py-2 bg-gray-100 dark:bg-gray-800 text-[#0c0c0c] dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary"
                 placeholder="Min"
               />
               <input
@@ -347,7 +624,7 @@ const Marketplace = () => {
                     max: parseFloat(e.target.value),
                   }))
                 }
-                className="w-full px-3 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary"
+                className="w-full px-3 py-2 bg-gray-100 dark:bg-gray-800 text-[#0c0c0c] dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary"
                 placeholder="Max"
               />
             </div>
@@ -355,7 +632,7 @@ const Marketplace = () => {
 
           {/* Rarity Filter */}
           <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-3 text-light-text dark:text-dark-text">
+            <h3 className="text-lg font-semibold mb-3 text-[#0c0c0c] dark:text-[#f5e6d3]">
               Rarity
             </h3>
             <div className="space-y-2">
@@ -370,7 +647,7 @@ const Marketplace = () => {
                     onChange={() => toggleRarity(rarity)}
                     className="form-checkbox h-4 w-4 text-light-primary dark:text-dark-primary rounded"
                   />
-                  <span className="text-light-text dark:text-dark-text">
+                  <span className="text-[#0c0c0c] dark:text-[#f5e6d3]">
                     {rarity}
                   </span>
                 </label>
@@ -510,6 +787,43 @@ const Marketplace = () => {
 const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const [randomizedCards, setRandomizedCards] = useState([]);
+
+  // Function to get random cards from different categories
+  const getRandomCards = () => {
+    const pixaCharCards = allCards.filter((card) =>
+      card.tags.includes("pixaChar")
+    );
+    const pixaWeaponCards = allCards.filter((card) =>
+      card.tags.includes("pixaWeapon")
+    );
+    const pixaPunkCards = allCards.filter((card) =>
+      card.tags.includes("pixaPunk")
+    );
+
+    // Get random cards from each category
+    const getRandomFromCategory = (cards, count) => {
+      const shuffled = [...cards].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, count);
+    };
+
+    // Get 4 cards from each category (or less if not enough cards)
+    const randomChar = getRandomFromCategory(pixaCharCards, 4);
+    const randomWeapon = getRandomFromCategory(pixaWeaponCards, 4);
+    const randomPunk = getRandomFromCategory(pixaPunkCards, 4);
+
+    // Combine and shuffle all selected cards
+    const combined = [...randomChar, ...randomWeapon, ...randomPunk].sort(
+      () => Math.random() - 0.5
+    );
+
+    return combined;
+  };
+
+  // Initialize random cards on mount and when showMore changes
+  useEffect(() => {
+    setRandomizedCards(getRandomCards());
+  }, [showMore]);
 
   return (
     <>
@@ -816,7 +1130,7 @@ const Home = () => {
       </section>
 
       {/* Products Section */}
-      <section className="relative py-24 bg-light-section dark:bg-dark-section">
+      <section className="relative py-24 bg-[#f5e6d3] dark:bg-[#0c0c0c]">
         {/* Top Cloud Frame */}
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none"
@@ -835,12 +1149,9 @@ const Home = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16 pt-20">
-            <h2 className="text-5xl md:text-7xl font-bold mb-4 text-light-text dark:text-dark-text">
+            <h2 className="text-5xl md:text-7xl font-bold mb-4 text-white">
               The Pixa Collxn
             </h2>
-            <p className="text-xl text-light-muted dark:text-dark-muted">
-              Discover our unique pixel art collections
-            </p>
           </div>
 
           {/* Product Categories Grid */}
@@ -1009,74 +1320,75 @@ const Home = () => {
           {/* Cards Grid - Desktop */}
           <div className="hidden lg:flex flex-col">
             <div className="grid grid-cols-3 gap-4 md:gap-6">
-              {[...Array(showMore ? 12 : 6)].map((_, index) => (
-                <div
-                  key={allCards[index].id}
-                  className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800"
-                >
-                  {/* Image Container with Tags */}
-                  <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
-                    <img
-                      src={allCards[index].image}
-                      alt={allCards[index].name}
-                      className={`w-full h-full object-contain p-4 image-pixelated ${
-                        allCards[index].rounded ? "rounded-2xl" : ""
-                      }`}
-                    />
-                    {/* Tags Container */}
-                    <div className="absolute top-3 left-3 flex flex-col gap-2">
-                      {/* Rarity Tag */}
-                      <span
-                        className={`
-                        rarity-pill bg-gradient-to-r ${allCards[index].tagColor}
-                      `}
-                      >
-                        {allCards[index].rarity}
-                      </span>
-                      {/* PixaChar Tag */}
-                      {allCards[index].tags?.includes("pixaChar") && (
-                        <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
-                          pixaChar
+              {[...Array(showMore ? 12 : 6)].map((_, index) => {
+                const card = randomizedCards[index];
+                return card ? (
+                  <div
+                    key={card.id}
+                    className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800"
+                  >
+                    {/* Image Container with Tags */}
+                    <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
+                      <img
+                        src={card.image}
+                        alt={card.name}
+                        className={`w-full h-full object-contain p-4 image-pixelated ${
+                          card.rounded ? "rounded-2xl" : ""
+                        }`}
+                      />
+                      {/* Tags Container */}
+                      <div className="absolute top-3 left-3 flex flex-col gap-2">
+                        {/* Rarity Tag */}
+                        <span
+                          className={`
+                          rarity-pill bg-gradient-to-r ${card.tagColor}
+                        `}
+                        >
+                          {card.rarity}
                         </span>
-                      )}
-                      {/* PixaWeapon Tag */}
-                      {allCards[index].tags?.includes("pixaWeapon") && (
-                        <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
-                          pixaWeapon
-                        </span>
-                      )}
-                      {/* PixaPunk Tag */}
-                      {allCards[index].tags?.includes("pixaPunk") && (
-                        <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
-                          pixaPunk
-                        </span>
-                      )}
+                        {/* Collection Tags */}
+                        {card.tags?.includes("pixaChar") && (
+                          <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
+                            pixaChar
+                          </span>
+                        )}
+                        {card.tags?.includes("pixaWeapon") && (
+                          <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
+                            pixaWeapon
+                          </span>
+                        )}
+                        {card.tags?.includes("pixaPunk") && (
+                          <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
+                            pixaPunk
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
+                      {card.name}
+                    </h3>
+                    <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
+                      Created by Artist #{card.id}
+                    </p>
+
+                    {/* Price Tag */}
+                    <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
+                      {card.price} ETH
+                    </p>
+
+                    {/* Buttons Container */}
+                    <div className="flex flex-col gap-3">
+                      <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
+                        Place Bid
+                      </button>
+                      <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
+                        View Details
+                      </button>
                     </div>
                   </div>
-
-                  <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
-                    {allCards[index].name}
-                  </h3>
-                  <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
-                    Created by Artist #{allCards[index].id}
-                  </p>
-
-                  {/* Price Tag */}
-                  <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
-                    {allCards[index].price} ETH
-                  </p>
-
-                  {/* Buttons Container */}
-                  <div className="flex flex-col gap-3">
-                    <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
-                      Place Bid
-                    </button>
-                    <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
-                      View Details
-                    </button>
-                  </div>
-                </div>
-              ))}
+                ) : null;
+              })}
             </div>
 
             <div className="flex justify-center mt-12 gap-4">
@@ -1113,18 +1425,18 @@ const Home = () => {
 
           {/* Cards Grid - Mobile */}
           <div className="lg:hidden flex overflow-x-auto pb-6 gap-4 md:gap-6 hide-scrollbar snap-x snap-mandatory">
-            {allCards.map((item) => (
+            {randomizedCards.map((card) => (
               <div
-                key={item.id}
+                key={card.id}
                 className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800 flex-shrink-0 w-[280px] snap-center"
               >
                 {/* Image Container with Tags */}
                 <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
                   <img
-                    src={item.image}
-                    alt={item.name}
+                    src={card.image}
+                    alt={card.name}
                     className={`w-full h-full object-contain p-4 image-pixelated ${
-                      item.rounded ? "rounded-2xl" : ""
+                      card.rounded ? "rounded-2xl" : ""
                     }`}
                   />
                   {/* Tags Container */}
@@ -1132,25 +1444,23 @@ const Home = () => {
                     {/* Rarity Tag */}
                     <span
                       className={`
-                      rarity-pill bg-gradient-to-r ${item.tagColor}
+                      rarity-pill bg-gradient-to-r ${card.tagColor}
                     `}
                     >
-                      {item.rarity}
+                      {card.rarity}
                     </span>
-                    {/* PixaChar Tag */}
-                    {item.tags?.includes("pixaChar") && (
+                    {/* Collection Tags */}
+                    {card.tags?.includes("pixaChar") && (
                       <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
                         pixaChar
                       </span>
                     )}
-                    {/* PixaWeapon Tag */}
-                    {item.tags?.includes("pixaWeapon") && (
+                    {card.tags?.includes("pixaWeapon") && (
                       <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
                         pixaWeapon
                       </span>
                     )}
-                    {/* PixaPunk Tag */}
-                    {item.tags?.includes("pixaPunk") && (
+                    {card.tags?.includes("pixaPunk") && (
                       <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
                         pixaPunk
                       </span>
@@ -1159,15 +1469,15 @@ const Home = () => {
                 </div>
 
                 <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
-                  {item.name}
+                  {card.name}
                 </h3>
                 <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
-                  Created by Artist #{item.id}
+                  Created by Artist #{card.id}
                 </p>
 
                 {/* Price Tag */}
                 <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
-                  {item.price} ETH
+                  {card.price} ETH
                 </p>
 
                 {/* Buttons Container */}
@@ -1183,6 +1493,21 @@ const Home = () => {
             ))}
           </div>
         </section>
+
+        {/* Bottom Cloud Frame */}
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none"
+          style={{ zIndex: 10 }}
+        >
+          <img
+            src={cloudsTopImg}
+            alt="Bottom Cloud Frame"
+            className="w-full"
+            style={{
+              imageRendering: "pixelated",
+            }}
+          />
+        </div>
       </main>
     </>
   );
@@ -1190,15 +1515,58 @@ const Home = () => {
 
 // Collection page components
 const PixaCharacter = () => {
-  const characterCards = allCards.filter((card) =>
-    card.tags.includes("pixaChar")
-  );
+  const [sortOption, setSortOption] = useState("default");
+  const characterCards = allCards
+    .filter((card) => card.tags.includes("pixaChar"))
+    .sort((a, b) => {
+      switch (sortOption) {
+        case "price-low-high":
+          return parseFloat(a.price) - parseFloat(b.price);
+        case "price-high-low":
+          return parseFloat(b.price) - parseFloat(a.price);
+        case "rarity":
+          const rarityOrder = [
+            "Common",
+            "Rare",
+            "Trending",
+            "Very Rare",
+            "Legendary",
+          ];
+          return rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity);
+        default:
+          return 0;
+      }
+    });
 
   return (
-    <div className="container mx-auto px-4 pt-32">
-      <h1 className="text-4xl md:text-6xl font-bold mb-8 text-light-text dark:text-dark-text">
-        PixaCharacter Collection
-      </h1>
+    <div className="container mx-auto px-4 pt-32 pb-16">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 md:mb-0 text-light-text dark:text-dark-text">
+          PixaCharacter Collection
+        </h1>
+      </div>
+
+      {/* Sort Bar */}
+      <div className="flex flex-col sm:flex-row gap-4 mb-6">
+        <div className="flex-grow"></div>
+        <select
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value)}
+          className="px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
+        >
+          <option value="default">Sort by</option>
+          <option value="price-low-high">Price: Low to High</option>
+          <option value="price-high-low">Price: High to Low</option>
+          <option value="rarity">Rarity</option>
+        </select>
+      </div>
+
+      {/* Results Count */}
+      <p className="text-light-muted dark:text-dark-muted mb-6">
+        Showing {characterCards.length} items
+      </p>
+
+      {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {characterCards.map((card) => (
           <div
@@ -1247,15 +1615,58 @@ const PixaCharacter = () => {
 };
 
 const PixaWeapon = () => {
-  const weaponCards = allCards.filter((card) =>
-    card.tags.includes("pixaWeapon")
-  );
+  const [sortOption, setSortOption] = useState("default");
+  const weaponCards = allCards
+    .filter((card) => card.tags.includes("pixaWeapon"))
+    .sort((a, b) => {
+      switch (sortOption) {
+        case "price-low-high":
+          return parseFloat(a.price) - parseFloat(b.price);
+        case "price-high-low":
+          return parseFloat(b.price) - parseFloat(a.price);
+        case "rarity":
+          const rarityOrder = [
+            "Common",
+            "Rare",
+            "Trending",
+            "Very Rare",
+            "Legendary",
+          ];
+          return rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity);
+        default:
+          return 0;
+      }
+    });
 
   return (
-    <div className="container mx-auto px-4 pt-32">
-      <h1 className="text-4xl md:text-6xl font-bold mb-8 text-light-text dark:text-dark-text">
-        PixaWeapon Collection
-      </h1>
+    <div className="container mx-auto px-4 pt-32 pb-16">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 md:mb-0 text-light-text dark:text-dark-text">
+          PixaWeapon Collection
+        </h1>
+      </div>
+
+      {/* Sort Bar */}
+      <div className="flex flex-col sm:flex-row gap-4 mb-6">
+        <div className="flex-grow"></div>
+        <select
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value)}
+          className="px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
+        >
+          <option value="default">Sort by</option>
+          <option value="price-low-high">Price: Low to High</option>
+          <option value="price-high-low">Price: High to Low</option>
+          <option value="rarity">Rarity</option>
+        </select>
+      </div>
+
+      {/* Results Count */}
+      <p className="text-light-muted dark:text-dark-muted mb-6">
+        Showing {weaponCards.length} items
+      </p>
+
+      {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {weaponCards.map((card) => (
           <div
@@ -1304,13 +1715,58 @@ const PixaWeapon = () => {
 };
 
 const PixaPunk = () => {
-  const punkCards = allCards.filter((card) => card.tags.includes("pixaPunk"));
+  const [sortOption, setSortOption] = useState("default");
+  const punkCards = allCards
+    .filter((card) => card.tags.includes("pixaPunk"))
+    .sort((a, b) => {
+      switch (sortOption) {
+        case "price-low-high":
+          return parseFloat(a.price) - parseFloat(b.price);
+        case "price-high-low":
+          return parseFloat(b.price) - parseFloat(a.price);
+        case "rarity":
+          const rarityOrder = [
+            "Common",
+            "Rare",
+            "Trending",
+            "Very Rare",
+            "Legendary",
+          ];
+          return rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity);
+        default:
+          return 0;
+      }
+    });
 
   return (
-    <div className="container mx-auto px-4 pt-32">
-      <h1 className="text-4xl md:text-6xl font-bold mb-8 text-light-text dark:text-dark-text">
-        PixaPunk Collection
-      </h1>
+    <div className="container mx-auto px-4 pt-32 pb-16">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 md:mb-0 text-light-text dark:text-dark-text">
+          PixaPunk Collection
+        </h1>
+      </div>
+
+      {/* Sort Bar */}
+      <div className="flex flex-col sm:flex-row gap-4 mb-6">
+        <div className="flex-grow"></div>
+        <select
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value)}
+          className="px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
+        >
+          <option value="default">Sort by</option>
+          <option value="price-low-high">Price: Low to High</option>
+          <option value="price-high-low">Price: High to Low</option>
+          <option value="rarity">Rarity</option>
+        </select>
+      </div>
+
+      {/* Results Count */}
+      <p className="text-light-muted dark:text-dark-muted mb-6">
+        Showing {punkCards.length} items
+      </p>
+
+      {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {punkCards.map((card) => (
           <div

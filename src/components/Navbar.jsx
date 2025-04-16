@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import timmyGif from "../assets/NPCs/timmy.gif";
@@ -77,17 +77,40 @@ const NavLink = ({ to, children }) => {
 
 const DropdownMenu = ({ children, items }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const timeoutRef = useRef(null);
+  const dropdownRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 300); // 300ms delay before closing
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
-    <div className="relative group">
+    <div className="relative group" ref={dropdownRef}>
       <div
         className="flex items-center cursor-pointer"
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => setIsOpen(false)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         {children}
         <svg
-          className={`ml-1 h-4 w-4 transition-transform duration-200 ${
+          className={`ml-1 h-4 w-4 transition-transform duration-300 ${
             isOpen ? "transform rotate-180" : ""
           }`}
           fill="none"
@@ -105,14 +128,14 @@ const DropdownMenu = ({ children, items }) => {
 
       {/* Desktop Dropdown */}
       <div
-        className={`hidden md:block absolute z-[150] mt-2 w-48 rounded-lg shadow-lg py-1 bg-white dark:bg-[#1a1a1a] transform transition-all duration-200 ${
+        className={`hidden md:block absolute z-[150] mt-2 w-48 rounded-lg shadow-lg py-1 bg-white dark:bg-[#1a1a1a] transform transition-all duration-300 ${
           isOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
         style={{ top: "100%" }}
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => setIsOpen(false)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         {items.map((item, index) => (
           <Link
