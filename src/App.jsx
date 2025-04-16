@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import oceanBg from "./assets/gifs/ocean.png";
 import mapLandingGif from "./assets/gifs/map_landing 01.gif";
@@ -211,12 +211,19 @@ const Home = () => {
                 Discover and collect unique pixel art NFTs
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="pixel-borders pixel-borders-primary px-8 py-3 text-lg font-medium">
-                  Start Creating
-                </button>
-                <button className="pixel-borders pixel-borders-secondary px-8 py-3 text-lg font-medium">
-                  Explore Gallery
-                </button>
+                <Link
+                  to="/pixabuilder"
+                  className="pixel-borders pixel-borders-primary px-8 py-3 text-lg font-medium inline-flex items-center gap-2"
+                >
+                  <span className="image-pixelated">🛠️</span>
+                  Pixa Builder
+                </Link>
+                <Link
+                  to="/marketplace"
+                  className="pixel-borders pixel-borders-secondary px-8 py-3 text-lg font-medium"
+                >
+                  Market Place
+                </Link>
               </div>
             </div>
 
