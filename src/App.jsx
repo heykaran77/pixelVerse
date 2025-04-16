@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import oceanBg from "./assets/gifs/ocean.png";
 import mapLandingGif from "./assets/gifs/map_landing 01.gif";
+import cloudsImg from "./assets/gifs/clouds.png";
 
 // Import character images
 import Garth from "./assets/Characters/Garth.png";
@@ -102,152 +103,173 @@ const Home = () => (
         }}
       />
 
-      <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white relative z-10">
-        Your Journey into PixelVerse
-      </h2>
+      {/* Clouds Layer */}
+      <img
+        src={cloudsImg}
+        alt="Clouds"
+        className="absolute w-full h-auto left-0 right-0 z-10"
+        style={{
+          top: 0,
+          objectFit: "cover",
+        }}
+      />
 
-      {/* Timeline Container */}
-      <div className="relative z-10 py-8">
-        {/* Desktop Timeline (Horizontal) */}
-        <div className="hidden lg:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between relative" style={{ gap: "5vw" }}>
-            {/* Custom Zig-zag Path */}
+      {/* Map Timeline Container */}
+      <div className="relative z-20 py-16 overflow-hidden">
+        {/* Desktop Map Timeline */}
+        <div className="hidden lg:block">
+          <div className="relative min-h-[500px] max-w-[900px] mx-auto px-8">
+            {/* Map Path */}
             <svg
-              className="absolute left-0 right-0 top-1/2 -translate-y-1/2 w-full"
-              height="100"
-              style={{ filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.1))" }}
+              className="absolute inset-0 w-full h-full"
+              preserveAspectRatio="none"
+              viewBox="0 0 900 300"
             >
+              {/* Main Path */}
               <path
-                d="M0,50 L25%,20 L50%,80 L75%,20 L100%,80"
+                d="M100,150 C200,150 250,100 350,100 C450,100 500,200 600,200 C700,200 750,100 800,100"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
-                strokeDasharray="4 4"
+                strokeWidth="4"
+                strokeDasharray="8 8"
                 className="text-light-primary dark:text-dark-primary"
+              />
+              {/* Path Dots */}
+              <circle
+                cx="100"
+                cy="150"
+                r="6"
+                className="fill-light-primary dark:fill-dark-primary"
+              />
+              <circle
+                cx="350"
+                cy="100"
+                r="6"
+                className="fill-light-primary dark:fill-dark-primary"
+              />
+              <circle
+                cx="600"
+                cy="200"
+                r="6"
+                className="fill-light-primary dark:fill-dark-primary"
+              />
+              <circle
+                cx="800"
+                cy="100"
+                r="6"
+                className="fill-light-primary dark:fill-dark-primary"
               />
             </svg>
 
-            {[
-              {
-                title: "Connect & Explore",
-                description:
-                  "Sign up and connect your wallet to start exploring unique pixel art collections.",
-              },
-              {
-                title: "Create & Customize",
-                description:
-                  "Use our PixaBuilder to create and customize your own pixel art masterpieces.",
-              },
-              {
-                title: "Collect & Trade",
-                description:
-                  "Build your collection by trading with other artists and collectors in the marketplace.",
-              },
-              {
-                title: "Earn & Grow",
-                description:
-                  "Earn rewards, unlock achievements, and grow your presence in the community.",
-              },
-            ].map((item, index) => (
-              <div
-                key={item.title}
-                className="flex-1"
-                style={{
-                  transform: `translateY(${
-                    index % 2 === 0 ? "-30px" : "30px"
-                  })`,
-                  transition: "transform 0.3s ease-in-out",
-                  minWidth: "200px",
-                  maxWidth: "300px",
-                }}
-              >
-                {/* Content Pill */}
-                <div className="relative group h-full">
-                  <div className="absolute inset-0 bg-white/10 dark:bg-black/10 backdrop-blur-md rounded-2xl" />
-                  <div className="relative p-4">
-                    {/* GIF placeholder */}
-                    <div className="w-16 h-16 mx-auto mb-3">
-                      {/* <img src={item.gif} alt={item.title} className="w-full h-full object-contain" /> */}
-                    </div>
-                    <h3 className="text-lg font-bold mb-2 text-light-text dark:text-dark-text">
+            {/* Timeline Points */}
+            <div className="relative w-full">
+              {[
+                { title: "Connect & Explore", x: "11%", y: "150px" },
+                { title: "Create & Customize", x: "39%", y: "100px" },
+                { title: "Collect & Trade", x: "67%", y: "200px" },
+                { title: "Earn & Grow", x: "89%", y: "100px" },
+              ].map((item, index) => (
+                <div
+                  key={item.title}
+                  className="relative z-20"
+                  style={{
+                    position: "absolute",
+                    left: item.x,
+                    top: item.y,
+                    transform: "translate(-50%, -120%)",
+                  }}
+                >
+                  <div
+                    className={`timeline-pill p-4 text-center ${
+                      index % 2 === 0 ? "float-up" : "float-down"
+                    }`}
+                  >
+                    <h3 className="text-lg font-bold text-light-text dark:text-dark-text whitespace-nowrap">
                       {item.title}
                     </h3>
-                    <p className="text-light-text/80 dark:text-dark-text/80 text-sm">
-                      {item.description}
-                    </p>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Mobile Timeline (Vertical) */}
-        <div className="lg:hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative space-y-12">
-            {/* Vertical Zig-zag Line */}
+        {/* Mobile Map Timeline */}
+        <div className="lg:hidden px-4 sm:px-6">
+          <div className="relative min-h-[600px]">
+            {/* Mobile Map Path */}
             <svg
-              className="absolute left-4 top-0 h-full w-8"
+              className="absolute h-full w-32"
+              style={{ left: "50%", transform: "translateX(-50%)" }}
               preserveAspectRatio="none"
+              viewBox="0 0 100 600"
             >
+              {/* Main Path */}
               <path
-                d="M16,0 L8,100 L24,200 L8,300 L24,400"
+                d="M50,50 C60,100 40,150 50,200 C60,250 40,300 50,350 C60,400 40,450 50,500"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
-                strokeDasharray="4 4"
+                strokeWidth="4"
+                strokeDasharray="8 8"
                 className="text-light-primary dark:text-dark-primary"
+              />
+              {/* Path Dots */}
+              <circle
+                cx="50"
+                cy="50"
+                r="6"
+                className="fill-light-primary dark:fill-dark-primary"
+              />
+              <circle
+                cx="50"
+                cy="200"
+                r="6"
+                className="fill-light-primary dark:fill-dark-primary"
+              />
+              <circle
+                cx="50"
+                cy="350"
+                r="6"
+                className="fill-light-primary dark:fill-dark-primary"
+              />
+              <circle
+                cx="50"
+                cy="500"
+                r="6"
+                className="fill-light-primary dark:fill-dark-primary"
               />
             </svg>
 
-            {[
-              {
-                title: "Connect & Explore",
-                description:
-                  "Sign up and connect your wallet to start exploring unique pixel art collections.",
-              },
-              {
-                title: "Create & Customize",
-                description:
-                  "Use our PixaBuilder to create and customize your own pixel art masterpieces.",
-              },
-              {
-                title: "Collect & Trade",
-                description:
-                  "Build your collection by trading with other artists and collectors in the marketplace.",
-              },
-              {
-                title: "Earn & Grow",
-                description:
-                  "Earn rewards, unlock achievements, and grow your presence in the community.",
-              },
-            ].map((item, index) => (
-              <div
-                key={item.title}
-                className="relative pl-12"
-                style={{
-                  transform: `translateX(${index % 2 === 0 ? "0" : "20px"})`,
-                  transition: "transform 0.3s ease-in-out",
-                }}
-              >
-                {/* Content Pill */}
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-white/10 dark:bg-black/10 backdrop-blur-md rounded-2xl" />
-                  <div className="relative p-4">
-                    {/* GIF placeholder */}
-                    <div className="w-16 h-16 mb-3">
-                      {/* <img src={item.gif} alt={item.title} className="w-full h-full object-contain" /> */}
-                    </div>
-                    <h3 className="text-lg font-bold mb-2 text-light-text dark:text-dark-text">
+            {/* Mobile Timeline Points */}
+            <div className="relative space-y-32 pt-8">
+              {[
+                { title: "Connect & Explore", y: "50px", align: "left" },
+                { title: "Create & Customize", y: "200px", align: "right" },
+                { title: "Collect & Trade", y: "350px", align: "left" },
+                { title: "Earn & Grow", y: "500px", align: "right" },
+              ].map((item, index) => (
+                <div
+                  key={item.title}
+                  className="relative z-20"
+                  style={{
+                    position: "absolute",
+                    top: item.y,
+                    left: item.align === "left" ? "30%" : "70%",
+                    transform: "translate(-50%, -50%)",
+                  }}
+                >
+                  <div
+                    className={`timeline-pill p-4 text-center ${
+                      index % 2 === 0 ? "float-up" : "float-down"
+                    }`}
+                  >
+                    <h3 className="text-lg font-bold text-light-text dark:text-dark-text whitespace-nowrap">
                       {item.title}
                     </h3>
-                    <p className="text-light-text/80 dark:text-dark-text/80 text-sm">
-                      {item.description}
-                    </p>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

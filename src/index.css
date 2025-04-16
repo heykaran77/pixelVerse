@@ -307,6 +307,103 @@
       left: 125%;
     }
   }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes floatReverse {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes floatClouds {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% 0;
+    }
+  }
+
+  .timeline-pill {
+    @apply relative overflow-hidden;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    clip-path: polygon(
+      0 8px,
+      4px 8px,
+      4px 4px,
+      8px 4px,
+      8px 0,
+      calc(100% - 8px) 0,
+      calc(100% - 8px) 4px,
+      calc(100% - 4px) 4px,
+      calc(100% - 4px) 8px,
+      100% 8px,
+      100% calc(100% - 8px),
+      calc(100% - 4px) calc(100% - 8px),
+      calc(100% - 4px) calc(100% - 4px),
+      calc(100% - 8px) calc(100% - 4px),
+      calc(100% - 8px) 100%,
+      8px 100%,
+      8px calc(100% - 4px),
+      4px calc(100% - 4px),
+      4px calc(100% - 8px),
+      0 calc(100% - 8px)
+    );
+  }
+
+  .timeline-pill::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+
+  .timeline-pill:hover::before {
+    left: 100%;
+  }
+
+  .timeline-pill.float-up {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .timeline-pill.float-down {
+    animation: floatReverse 3s ease-in-out infinite;
+  }
+
+  .dark .timeline-pill {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
 }
 
 @layer utilities {
