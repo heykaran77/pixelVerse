@@ -8,6 +8,7 @@ import mapLanding05Gif from "./assets/gifs/map_landing 05.gif";
 import cloudsImg from "./assets/gifs/clouds.png";
 import cloudsTopImg from "./assets/gifs/clouds_top.png";
 import axelGif from "./assets/gifs/axel.gif";
+import ProductDetails from "./components/ProductDetails";
 
 // Import weapon images
 import DiamondSword from "./assets/gifs/Weapons/Diamond Sword.gif";
@@ -440,6 +441,220 @@ const Create = () => (
   </div>
 );
 
+// Footer Component
+const Footer = () => {
+  return (
+    <footer className="bg-[#0c0c0c] dark:bg-gray-900 text-white pt-16 pb-8">
+      <div className="container mx-auto px-4">
+        {/* Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* Brand Section */}
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold mb-4">PixelVerse</h3>
+            <p className="text-gray-400">
+              Discover, collect, and trade unique pixel art NFTs in our vibrant
+              digital marketplace.
+            </p>
+            <div className="flex space-x-4">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Collections Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Collections</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  to="/pixa-character"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  PixaCharacters
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/pixa-weapon"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  PixaWeapons
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/pixa-punk"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  PixaPunks
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/marketplace"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  All Collections
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Help Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Help</h3>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  FAQs
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Getting Started
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Contact Support
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Discord Community
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Stay Updated</h3>
+            <p className="text-gray-400 mb-4">
+              Subscribe to our newsletter for the latest updates and exclusive
+              offers.
+            </p>
+            <form className="space-y-2">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary"
+              />
+              <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 mt-8 border-t border-gray-800">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+              © 2024 PixelVerse. All rights reserved.
+            </p>
+            <div className="flex space-x-6">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Terms of Service
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                Cookie Policy
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// Update Marketplace component to include Footer
 const Marketplace = () => {
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
@@ -511,276 +726,282 @@ const Marketplace = () => {
   ].filter(Boolean).length;
 
   return (
-    <div className="container mx-auto px-4 pt-32 pb-16">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 md:mb-0 text-light-text dark:text-dark-text">
-          Marketplace
-        </h1>
-      </div>
+    <>
+      <div className="container mx-auto px-4 pt-32 pb-16">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 md:mb-0 text-light-text dark:text-dark-text">
+            Marketplace
+          </h1>
+        </div>
 
-      {/* Mobile Filter Toggle */}
-      <div className="md:hidden mb-6">
-        <button
-          onClick={() => setIsFilterOpen(!isFilterOpen)}
-          className="w-full pixel-borders pixel-borders-primary px-4 py-3 flex justify-between items-center"
-        >
-          <span className="flex items-center gap-2">
+        {/* Mobile Filter Toggle */}
+        <div className="md:hidden mb-6">
+          <button
+            onClick={() => setIsFilterOpen(!isFilterOpen)}
+            className="w-full pixel-borders pixel-borders-primary px-4 py-3 flex justify-between items-center"
+          >
+            <span className="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z"
+                />
+              </svg>
+              Filters
+              {activeFiltersCount > 0 && (
+                <span className="ml-2 px-2 py-1 bg-light-primary dark:bg-dark-primary text-white rounded-full text-sm">
+                  {activeFiltersCount}
+                </span>
+              )}
+            </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6"
+              className={`w-6 h-6 transform transition-transform ${
+                isFilterOpen ? "rotate-180" : ""
+              }`}
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z"
+                d="m19.5 8.25-7.5 7.5-7.5-7.5"
               />
             </svg>
-            Filters
-            {activeFiltersCount > 0 && (
-              <span className="ml-2 px-2 py-1 bg-light-primary dark:bg-dark-primary text-white rounded-full text-sm">
-                {activeFiltersCount}
-              </span>
-            )}
-          </span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className={`w-6 h-6 transform transition-transform ${
-              isFilterOpen ? "rotate-180" : ""
-            }`}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m19.5 8.25-7.5 7.5-7.5-7.5"
-            />
-          </svg>
-        </button>
-      </div>
-
-      {/* Filters Section */}
-      <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 mb-8">
-        {/* Filters Sidebar */}
-        <div
-          className={`${
-            isFilterOpen ? "block" : "hidden"
-          } md:block bg-white dark:bg-[#0c0c0c] p-6 rounded-lg sticky top-24`}
-        >
-          <h2 className="text-xl font-bold mb-4 text-[#0c0c0c] dark:text-[#f5e6d3]">
-            Filters
-          </h2>
-
-          {/* Collection Filter */}
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-3 text-[#0c0c0c] dark:text-[#f5e6d3]">
-              Collection
-            </h3>
-            <select
-              value={selectedFilter}
-              onChange={(e) => setSelectedFilter(e.target.value)}
-              className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 text-[#0c0c0c] dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
-            >
-              <option value="all">All Items</option>
-              <option value="pixaChar">Characters</option>
-              <option value="pixaWeapon">Weapons</option>
-              <option value="pixaPunk">Punks</option>
-            </select>
-          </div>
-
-          {/* Price Range Filter */}
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-3 text-[#0c0c0c] dark:text-[#f5e6d3]">
-              Price Range (ETH)
-            </h3>
-            <div className="flex gap-4">
-              <input
-                type="number"
-                min="0"
-                max={priceRange.max}
-                value={priceRange.min}
-                onChange={(e) =>
-                  setPriceRange((prev) => ({
-                    ...prev,
-                    min: parseFloat(e.target.value),
-                  }))
-                }
-                className="w-full px-3 py-2 bg-gray-100 dark:bg-gray-800 text-[#0c0c0c] dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary"
-                placeholder="Min"
-              />
-              <input
-                type="number"
-                min={priceRange.min}
-                value={priceRange.max}
-                onChange={(e) =>
-                  setPriceRange((prev) => ({
-                    ...prev,
-                    max: parseFloat(e.target.value),
-                  }))
-                }
-                className="w-full px-3 py-2 bg-gray-100 dark:bg-gray-800 text-[#0c0c0c] dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary"
-                placeholder="Max"
-              />
-            </div>
-          </div>
-
-          {/* Rarity Filter */}
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-3 text-[#0c0c0c] dark:text-[#f5e6d3]">
-              Rarity
-            </h3>
-            <div className="space-y-2">
-              {rarities.map((rarity) => (
-                <label
-                  key={rarity}
-                  className="flex items-center gap-2 cursor-pointer"
-                >
-                  <input
-                    type="checkbox"
-                    checked={selectedRarities.includes(rarity)}
-                    onChange={() => toggleRarity(rarity)}
-                    className="form-checkbox h-4 w-4 text-light-primary dark:text-dark-primary rounded"
-                  />
-                  <span className="text-[#0c0c0c] dark:text-[#f5e6d3]">
-                    {rarity}
-                  </span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Clear Filters Button */}
-          <button
-            onClick={() => {
-              setSelectedFilter("all");
-              setPriceRange({ min: 0, max: 5 });
-              setSelectedRarities([]);
-              setSortOption("default");
-              setSearchTerm("");
-            }}
-            className="w-full pixel-borders pixel-borders-secondary px-4 py-2 mt-4"
-          >
-            Clear Filters
           </button>
         </div>
 
-        {/* Main Content */}
-        <div>
-          {/* Search and Sort Bar */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-6">
-            {/* Search Bar */}
-            <div className="relative flex-grow">
-              <input
-                type="text"
-                placeholder="Search cards..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary"
-              />
-            </div>
+        {/* Filters Section */}
+        <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 mb-8">
+          {/* Filters Sidebar */}
+          <div
+            className={`${
+              isFilterOpen ? "block" : "hidden"
+            } md:block bg-white dark:bg-[#0c0c0c] p-6 rounded-lg sticky top-24`}
+          >
+            <h2 className="text-xl font-bold mb-4 text-[#0c0c0c] dark:text-[#f5e6d3]">
+              Filters
+            </h2>
 
-            {/* Sort Dropdown */}
-            <select
-              value={sortOption}
-              onChange={(e) => setSortOption(e.target.value)}
-              className="px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
-            >
-              <option value="default">Sort by</option>
-              <option value="price-low-high">Price: Low to High</option>
-              <option value="price-high-low">Price: High to Low</option>
-              <option value="rarity">Rarity</option>
-            </select>
-          </div>
-
-          {/* Results Count */}
-          <p className="text-light-muted dark:text-dark-muted mb-6">
-            Showing {filteredCards.length} items
-          </p>
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredCards.map((card) => (
-              <div
-                key={card.id}
-                className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800"
+            {/* Collection Filter */}
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-3 text-[#0c0c0c] dark:text-[#f5e6d3]">
+                Collection
+              </h3>
+              <select
+                value={selectedFilter}
+                onChange={(e) => setSelectedFilter(e.target.value)}
+                className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 text-[#0c0c0c] dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
               >
-                <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
-                  <img
-                    src={card.image}
-                    alt={card.name}
-                    className={`w-full h-full object-contain p-4 image-pixelated ${
-                      card.rounded ? "rounded-2xl" : ""
-                    }`}
-                  />
-                  {/* Tags Container */}
-                  <div className="absolute top-3 left-3 flex flex-col gap-2">
-                    {/* Rarity Tag */}
-                    <span
-                      className={`rarity-pill bg-gradient-to-r ${card.tagColor}`}
-                    >
-                      {card.rarity}
-                    </span>
-                    {/* Collection Tags */}
-                    {card.tags?.includes("pixaChar") && (
-                      <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
-                        pixaChar
-                      </span>
-                    )}
-                    {card.tags?.includes("pixaWeapon") && (
-                      <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
-                        pixaWeapon
-                      </span>
-                    )}
-                    {card.tags?.includes("pixaPunk") && (
-                      <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
-                        pixaPunk
-                      </span>
-                    )}
-                  </div>
-                </div>
+                <option value="all">All Items</option>
+                <option value="pixaChar">Characters</option>
+                <option value="pixaWeapon">Weapons</option>
+                <option value="pixaPunk">Punks</option>
+              </select>
+            </div>
 
-                <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
-                  {card.name}
-                </h3>
-                <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
-                  Created by Artist #{card.id}
-                </p>
-
-                {/* Price Tag */}
-                <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
-                  {card.price} ETH
-                </p>
-
-                {/* Buttons Container */}
-                <div className="flex flex-col gap-3">
-                  <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
-                    Place Bid
-                  </button>
-                  <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
-                    View Details
-                  </button>
-                </div>
+            {/* Price Range Filter */}
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-3 text-[#0c0c0c] dark:text-[#f5e6d3]">
+                Price Range (ETH)
+              </h3>
+              <div className="flex gap-4">
+                <input
+                  type="number"
+                  min="0"
+                  max={priceRange.max}
+                  value={priceRange.min}
+                  onChange={(e) =>
+                    setPriceRange((prev) => ({
+                      ...prev,
+                      min: parseFloat(e.target.value),
+                    }))
+                  }
+                  className="w-full px-3 py-2 bg-gray-100 dark:bg-gray-800 text-[#0c0c0c] dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary"
+                  placeholder="Min"
+                />
+                <input
+                  type="number"
+                  min={priceRange.min}
+                  value={priceRange.max}
+                  onChange={(e) =>
+                    setPriceRange((prev) => ({
+                      ...prev,
+                      max: parseFloat(e.target.value),
+                    }))
+                  }
+                  className="w-full px-3 py-2 bg-gray-100 dark:bg-gray-800 text-[#0c0c0c] dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary"
+                  placeholder="Max"
+                />
               </div>
-            ))}
+            </div>
+
+            {/* Rarity Filter */}
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-3 text-[#0c0c0c] dark:text-[#f5e6d3]">
+                Rarity
+              </h3>
+              <div className="space-y-2">
+                {rarities.map((rarity) => (
+                  <label
+                    key={rarity}
+                    className="flex items-center gap-2 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedRarities.includes(rarity)}
+                      onChange={() => toggleRarity(rarity)}
+                      className="form-checkbox h-4 w-4 text-light-primary dark:text-dark-primary rounded"
+                    />
+                    <span className="text-[#0c0c0c] dark:text-[#f5e6d3]">
+                      {rarity}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* Clear Filters Button */}
+            <button
+              onClick={() => {
+                setSelectedFilter("all");
+                setPriceRange({ min: 0, max: 5 });
+                setSelectedRarities([]);
+                setSortOption("default");
+                setSearchTerm("");
+              }}
+              className="w-full pixel-borders pixel-borders-secondary px-4 py-2 mt-4"
+            >
+              Clear Filters
+            </button>
           </div>
 
-          {/* No Results Message */}
-          {filteredCards.length === 0 && (
-            <div className="text-center py-16">
-              <p className="text-xl text-light-muted dark:text-dark-muted">
-                No items found matching your criteria
-              </p>
+          {/* Main Content */}
+          <div>
+            {/* Search and Sort Bar */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
+              {/* Search Bar */}
+              <div className="relative flex-grow">
+                <input
+                  type="text"
+                  placeholder="Search cards..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary"
+                />
+              </div>
+
+              {/* Sort Dropdown */}
+              <select
+                value={sortOption}
+                onChange={(e) => setSortOption(e.target.value)}
+                className="px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
+              >
+                <option value="default">Sort by</option>
+                <option value="price-low-high">Price: Low to High</option>
+                <option value="price-high-low">Price: High to Low</option>
+                <option value="rarity">Rarity</option>
+              </select>
             </div>
-          )}
+
+            {/* Results Count */}
+            <p className="text-light-muted dark:text-dark-muted mb-6">
+              Showing {filteredCards.length} items
+            </p>
+
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredCards.map((card) => (
+                <Link
+                  to={`/product/${card.id}`}
+                  key={card.id}
+                  className="block"
+                >
+                  <div className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800">
+                    <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
+                      <img
+                        src={card.image}
+                        alt={card.name}
+                        className={`w-full h-full object-contain p-4 image-pixelated ${
+                          card.rounded ? "rounded-2xl" : ""
+                        }`}
+                      />
+                      {/* Tags Container */}
+                      <div className="absolute top-3 left-3 flex flex-col gap-2">
+                        {/* Rarity Tag */}
+                        <span
+                          className={`rarity-pill bg-gradient-to-r ${card.tagColor}`}
+                        >
+                          {card.rarity}
+                        </span>
+                        {/* Collection Tags */}
+                        {card.tags?.includes("pixaChar") && (
+                          <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
+                            pixaChar
+                          </span>
+                        )}
+                        {card.tags?.includes("pixaWeapon") && (
+                          <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
+                            pixaWeapon
+                          </span>
+                        )}
+                        {card.tags?.includes("pixaPunk") && (
+                          <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
+                            pixaPunk
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
+                      {card.name}
+                    </h3>
+                    <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
+                      Created by Artist #{card.id}
+                    </p>
+
+                    {/* Price Tag */}
+                    <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
+                      {card.price} ETH
+                    </p>
+
+                    {/* Buttons Container */}
+                    <div className="flex flex-col gap-3">
+                      <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
+                        Place Bid
+                      </button>
+                      <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
+                        View Details
+                      </button>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            {/* No Results Message */}
+            {filteredCards.length === 0 && (
+              <div className="text-center py-16">
+                <p className="text-xl text-light-muted dark:text-dark-muted">
+                  No items found matching your criteria
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
@@ -1323,70 +1544,72 @@ const Home = () => {
               {[...Array(showMore ? 12 : 6)].map((_, index) => {
                 const card = randomizedCards[index];
                 return card ? (
-                  <div
+                  <Link
+                    to={`/product/${card.id}`}
                     key={card.id}
-                    className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800"
+                    className="block"
                   >
-                    {/* Image Container with Tags */}
-                    <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
-                      <img
-                        src={card.image}
-                        alt={card.name}
-                        className={`w-full h-full object-contain p-4 image-pixelated ${
-                          card.rounded ? "rounded-2xl" : ""
-                        }`}
-                      />
-                      {/* Tags Container */}
-                      <div className="absolute top-3 left-3 flex flex-col gap-2">
-                        {/* Rarity Tag */}
-                        <span
-                          className={`
-                          rarity-pill bg-gradient-to-r ${card.tagColor}
-                        `}
-                        >
-                          {card.rarity}
-                        </span>
-                        {/* Collection Tags */}
-                        {card.tags?.includes("pixaChar") && (
-                          <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
-                            pixaChar
+                    <div className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800">
+                      <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
+                        <img
+                          src={card.image}
+                          alt={card.name}
+                          className={`w-full h-full object-contain p-4 image-pixelated ${
+                            card.rounded ? "rounded-2xl" : ""
+                          }`}
+                        />
+                        {/* Tags Container */}
+                        <div className="absolute top-3 left-3 flex flex-col gap-2">
+                          {/* Rarity Tag */}
+                          <span
+                            className={`
+                            rarity-pill bg-gradient-to-r ${card.tagColor}
+                          `}
+                          >
+                            {card.rarity}
                           </span>
-                        )}
-                        {card.tags?.includes("pixaWeapon") && (
-                          <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
-                            pixaWeapon
-                          </span>
-                        )}
-                        {card.tags?.includes("pixaPunk") && (
-                          <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
-                            pixaPunk
-                          </span>
-                        )}
+                          {/* Collection Tags */}
+                          {card.tags?.includes("pixaChar") && (
+                            <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
+                              pixaChar
+                            </span>
+                          )}
+                          {card.tags?.includes("pixaWeapon") && (
+                            <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
+                              pixaWeapon
+                            </span>
+                          )}
+                          {card.tags?.includes("pixaPunk") && (
+                            <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
+                              pixaPunk
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
+                        {card.name}
+                      </h3>
+                      <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
+                        Created by Artist #{card.id}
+                      </p>
+
+                      {/* Price Tag */}
+                      <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
+                        {card.price} ETH
+                      </p>
+
+                      {/* Buttons Container */}
+                      <div className="flex flex-col gap-3">
+                        <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
+                          Place Bid
+                        </button>
+                        <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
+                          View Details
+                        </button>
                       </div>
                     </div>
-
-                    <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
-                      {card.name}
-                    </h3>
-                    <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
-                      Created by Artist #{card.id}
-                    </p>
-
-                    {/* Price Tag */}
-                    <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
-                      {card.price} ETH
-                    </p>
-
-                    {/* Buttons Container */}
-                    <div className="flex flex-col gap-3">
-                      <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
-                        Place Bid
-                      </button>
-                      <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
-                        View Details
-                      </button>
-                    </div>
-                  </div>
+                  </Link>
                 ) : null;
               })}
             </div>
@@ -1426,70 +1649,68 @@ const Home = () => {
           {/* Cards Grid - Mobile */}
           <div className="lg:hidden flex overflow-x-auto pb-6 gap-4 md:gap-6 hide-scrollbar snap-x snap-mandatory">
             {randomizedCards.map((card) => (
-              <div
-                key={card.id}
-                className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800 flex-shrink-0 w-[280px] snap-center"
-              >
-                {/* Image Container with Tags */}
-                <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
-                  <img
-                    src={card.image}
-                    alt={card.name}
-                    className={`w-full h-full object-contain p-4 image-pixelated ${
-                      card.rounded ? "rounded-2xl" : ""
-                    }`}
-                  />
-                  {/* Tags Container */}
-                  <div className="absolute top-3 left-3 flex flex-col gap-2">
-                    {/* Rarity Tag */}
-                    <span
-                      className={`
-                      rarity-pill bg-gradient-to-r ${card.tagColor}
-                    `}
-                    >
-                      {card.rarity}
-                    </span>
-                    {/* Collection Tags */}
-                    {card.tags?.includes("pixaChar") && (
-                      <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
-                        pixaChar
+              <Link to={`/product/${card.id}`} key={card.id} className="block">
+                <div className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800 flex-shrink-0 w-[280px] snap-center">
+                  <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
+                    <img
+                      src={card.image}
+                      alt={card.name}
+                      className={`w-full h-full object-contain p-4 image-pixelated ${
+                        card.rounded ? "rounded-2xl" : ""
+                      }`}
+                    />
+                    {/* Tags Container */}
+                    <div className="absolute top-3 left-3 flex flex-col gap-2">
+                      {/* Rarity Tag */}
+                      <span
+                        className={`
+                        rarity-pill bg-gradient-to-r ${card.tagColor}
+                      `}
+                      >
+                        {card.rarity}
                       </span>
-                    )}
-                    {card.tags?.includes("pixaWeapon") && (
-                      <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
-                        pixaWeapon
-                      </span>
-                    )}
-                    {card.tags?.includes("pixaPunk") && (
-                      <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
-                        pixaPunk
-                      </span>
-                    )}
+                      {/* Collection Tags */}
+                      {card.tags?.includes("pixaChar") && (
+                        <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
+                          pixaChar
+                        </span>
+                      )}
+                      {card.tags?.includes("pixaWeapon") && (
+                        <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
+                          pixaWeapon
+                        </span>
+                      )}
+                      {card.tags?.includes("pixaPunk") && (
+                        <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
+                          pixaPunk
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
+                    {card.name}
+                  </h3>
+                  <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
+                    Created by Artist #{card.id}
+                  </p>
+
+                  {/* Price Tag */}
+                  <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
+                    {card.price} ETH
+                  </p>
+
+                  {/* Buttons Container */}
+                  <div className="flex flex-col gap-3">
+                    <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
+                      Place Bid
+                    </button>
+                    <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
+                      View Details
+                    </button>
                   </div>
                 </div>
-
-                <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
-                  {card.name}
-                </h3>
-                <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
-                  Created by Artist #{card.id}
-                </p>
-
-                {/* Price Tag */}
-                <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
-                  {card.price} ETH
-                </p>
-
-                {/* Buttons Container */}
-                <div className="flex flex-col gap-3">
-                  <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
-                    Place Bid
-                  </button>
-                  <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
-                    View Details
-                  </button>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
@@ -1509,6 +1730,9 @@ const Home = () => {
           />
         </div>
       </main>
+
+      {/* Footer */}
+      <Footer />
     </>
   );
 };
@@ -1539,78 +1763,80 @@ const PixaCharacter = () => {
     });
 
   return (
-    <div className="container mx-auto px-4 pt-32 pb-16">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 md:mb-0 text-light-text dark:text-dark-text">
-          PixaCharacter Collection
-        </h1>
-      </div>
+    <>
+      <div className="container mx-auto px-4 pt-32 pb-16">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 md:mb-0 text-light-text dark:text-dark-text">
+            PixaCharacter Collection
+          </h1>
+        </div>
 
-      {/* Sort Bar */}
-      <div className="flex flex-col sm:flex-row gap-4 mb-6">
-        <div className="flex-grow"></div>
-        <select
-          value={sortOption}
-          onChange={(e) => setSortOption(e.target.value)}
-          className="px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
-        >
-          <option value="default">Sort by</option>
-          <option value="price-low-high">Price: Low to High</option>
-          <option value="price-high-low">Price: High to Low</option>
-          <option value="rarity">Rarity</option>
-        </select>
-      </div>
-
-      {/* Results Count */}
-      <p className="text-light-muted dark:text-dark-muted mb-6">
-        Showing {characterCards.length} items
-      </p>
-
-      {/* Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {characterCards.map((card) => (
-          <div
-            key={card.id}
-            className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800"
+        {/* Sort Bar */}
+        <div className="flex flex-col sm:flex-row gap-4 mb-6">
+          <div className="flex-grow"></div>
+          <select
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+            className="px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
           >
-            <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
-              <img
-                src={card.image}
-                alt={card.name}
-                className="w-full h-full object-contain p-4 image-pixelated"
-              />
-              <div className="absolute top-3 left-3 flex flex-col gap-2">
-                <span
-                  className={`rarity-pill bg-gradient-to-r ${card.tagColor}`}
-                >
-                  {card.rarity}
-                </span>
-                <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
-                  pixaChar
-                </span>
+            <option value="default">Sort by</option>
+            <option value="price-low-high">Price: Low to High</option>
+            <option value="price-high-low">Price: High to Low</option>
+            <option value="rarity">Rarity</option>
+          </select>
+        </div>
+
+        {/* Results Count */}
+        <p className="text-light-muted dark:text-dark-muted mb-6">
+          Showing {characterCards.length} items
+        </p>
+
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {characterCards.map((card) => (
+            <Link to={`/product/${card.id}`} key={card.id} className="block">
+              <div className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800">
+                <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
+                  <img
+                    src={card.image}
+                    alt={card.name}
+                    className="w-full h-full object-contain p-4 image-pixelated"
+                  />
+                  <div className="absolute top-3 left-3 flex flex-col gap-2">
+                    <span
+                      className={`rarity-pill bg-gradient-to-r ${card.tagColor}`}
+                    >
+                      {card.rarity}
+                    </span>
+                    <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
+                      pixaChar
+                    </span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
+                  {card.name}
+                </h3>
+                <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
+                  Created by Artist #{card.id}
+                </p>
+                <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
+                  {card.price} ETH
+                </p>
+                <div className="flex flex-col gap-3">
+                  <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
+                    Place Bid
+                  </button>
+                  <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
+                    View Details
+                  </button>
+                </div>
               </div>
-            </div>
-            <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
-              {card.name}
-            </h3>
-            <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
-              Created by Artist #{card.id}
-            </p>
-            <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
-              {card.price} ETH
-            </p>
-            <div className="flex flex-col gap-3">
-              <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
-                Place Bid
-              </button>
-              <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
-                View Details
-              </button>
-            </div>
-          </div>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
@@ -1639,78 +1865,80 @@ const PixaWeapon = () => {
     });
 
   return (
-    <div className="container mx-auto px-4 pt-32 pb-16">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 md:mb-0 text-light-text dark:text-dark-text">
-          PixaWeapon Collection
-        </h1>
-      </div>
+    <>
+      <div className="container mx-auto px-4 pt-32 pb-16">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 md:mb-0 text-light-text dark:text-dark-text">
+            PixaWeapon Collection
+          </h1>
+        </div>
 
-      {/* Sort Bar */}
-      <div className="flex flex-col sm:flex-row gap-4 mb-6">
-        <div className="flex-grow"></div>
-        <select
-          value={sortOption}
-          onChange={(e) => setSortOption(e.target.value)}
-          className="px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
-        >
-          <option value="default">Sort by</option>
-          <option value="price-low-high">Price: Low to High</option>
-          <option value="price-high-low">Price: High to Low</option>
-          <option value="rarity">Rarity</option>
-        </select>
-      </div>
-
-      {/* Results Count */}
-      <p className="text-light-muted dark:text-dark-muted mb-6">
-        Showing {weaponCards.length} items
-      </p>
-
-      {/* Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {weaponCards.map((card) => (
-          <div
-            key={card.id}
-            className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800"
+        {/* Sort Bar */}
+        <div className="flex flex-col sm:flex-row gap-4 mb-6">
+          <div className="flex-grow"></div>
+          <select
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+            className="px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
           >
-            <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
-              <img
-                src={card.image}
-                alt={card.name}
-                className="w-full h-full object-contain p-4 image-pixelated"
-              />
-              <div className="absolute top-3 left-3 flex flex-col gap-2">
-                <span
-                  className={`rarity-pill bg-gradient-to-r ${card.tagColor}`}
-                >
-                  {card.rarity}
-                </span>
-                <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
-                  pixaWeapon
-                </span>
+            <option value="default">Sort by</option>
+            <option value="price-low-high">Price: Low to High</option>
+            <option value="price-high-low">Price: High to Low</option>
+            <option value="rarity">Rarity</option>
+          </select>
+        </div>
+
+        {/* Results Count */}
+        <p className="text-light-muted dark:text-dark-muted mb-6">
+          Showing {weaponCards.length} items
+        </p>
+
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {weaponCards.map((card) => (
+            <Link to={`/product/${card.id}`} key={card.id} className="block">
+              <div className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800">
+                <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
+                  <img
+                    src={card.image}
+                    alt={card.name}
+                    className="w-full h-full object-contain p-4 image-pixelated"
+                  />
+                  <div className="absolute top-3 left-3 flex flex-col gap-2">
+                    <span
+                      className={`rarity-pill bg-gradient-to-r ${card.tagColor}`}
+                    >
+                      {card.rarity}
+                    </span>
+                    <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
+                      pixaWeapon
+                    </span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
+                  {card.name}
+                </h3>
+                <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
+                  Created by Artist #{card.id}
+                </p>
+                <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
+                  {card.price} ETH
+                </p>
+                <div className="flex flex-col gap-3">
+                  <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
+                    Place Bid
+                  </button>
+                  <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
+                    View Details
+                  </button>
+                </div>
               </div>
-            </div>
-            <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
-              {card.name}
-            </h3>
-            <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
-              Created by Artist #{card.id}
-            </p>
-            <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
-              {card.price} ETH
-            </p>
-            <div className="flex flex-col gap-3">
-              <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
-                Place Bid
-              </button>
-              <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
-                View Details
-              </button>
-            </div>
-          </div>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
@@ -1739,80 +1967,82 @@ const PixaPunk = () => {
     });
 
   return (
-    <div className="container mx-auto px-4 pt-32 pb-16">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 md:mb-0 text-light-text dark:text-dark-text">
-          PixaPunk Collection
-        </h1>
-      </div>
+    <>
+      <div className="container mx-auto px-4 pt-32 pb-16">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 md:mb-0 text-light-text dark:text-dark-text">
+            PixaPunk Collection
+          </h1>
+        </div>
 
-      {/* Sort Bar */}
-      <div className="flex flex-col sm:flex-row gap-4 mb-6">
-        <div className="flex-grow"></div>
-        <select
-          value={sortOption}
-          onChange={(e) => setSortOption(e.target.value)}
-          className="px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
-        >
-          <option value="default">Sort by</option>
-          <option value="price-low-high">Price: Low to High</option>
-          <option value="price-high-low">Price: High to Low</option>
-          <option value="rarity">Rarity</option>
-        </select>
-      </div>
-
-      {/* Results Count */}
-      <p className="text-light-muted dark:text-dark-muted mb-6">
-        Showing {punkCards.length} items
-      </p>
-
-      {/* Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {punkCards.map((card) => (
-          <div
-            key={card.id}
-            className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800"
+        {/* Sort Bar */}
+        <div className="flex flex-col sm:flex-row gap-4 mb-6">
+          <div className="flex-grow"></div>
+          <select
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+            className="px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
           >
-            <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
-              <img
-                src={card.image}
-                alt={card.name}
-                className={`w-full h-full object-contain p-4 image-pixelated ${
-                  card.rounded ? "rounded-2xl" : ""
-                }`}
-              />
-              <div className="absolute top-3 left-3 flex flex-col gap-2">
-                <span
-                  className={`rarity-pill bg-gradient-to-r ${card.tagColor}`}
-                >
-                  {card.rarity}
-                </span>
-                <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
-                  pixaPunk
-                </span>
+            <option value="default">Sort by</option>
+            <option value="price-low-high">Price: Low to High</option>
+            <option value="price-high-low">Price: High to Low</option>
+            <option value="rarity">Rarity</option>
+          </select>
+        </div>
+
+        {/* Results Count */}
+        <p className="text-light-muted dark:text-dark-muted mb-6">
+          Showing {punkCards.length} items
+        </p>
+
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {punkCards.map((card) => (
+            <Link to={`/product/${card.id}`} key={card.id} className="block">
+              <div className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800">
+                <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
+                  <img
+                    src={card.image}
+                    alt={card.name}
+                    className={`w-full h-full object-contain p-4 image-pixelated ${
+                      card.rounded ? "rounded-2xl" : ""
+                    }`}
+                  />
+                  <div className="absolute top-3 left-3 flex flex-col gap-2">
+                    <span
+                      className={`rarity-pill bg-gradient-to-r ${card.tagColor}`}
+                    >
+                      {card.rarity}
+                    </span>
+                    <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
+                      pixaPunk
+                    </span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
+                  {card.name}
+                </h3>
+                <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
+                  Created by Artist #{card.id}
+                </p>
+                <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
+                  {card.price} ETH
+                </p>
+                <div className="flex flex-col gap-3">
+                  <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
+                    Place Bid
+                  </button>
+                  <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
+                    View Details
+                  </button>
+                </div>
               </div>
-            </div>
-            <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
-              {card.name}
-            </h3>
-            <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
-              Created by Artist #{card.id}
-            </p>
-            <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
-              {card.price} ETH
-            </p>
-            <div className="flex flex-col gap-3">
-              <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
-                Place Bid
-              </button>
-              <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
-                View Details
-              </button>
-            </div>
-          </div>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
@@ -1826,20 +2056,71 @@ function App() {
           <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/create" element={<Create />} />
+            <Route
+              path="/gallery"
+              element={
+                <>
+                  <Gallery />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/create"
+              element={
+                <>
+                  <Create />
+                  <Footer />
+                </>
+              }
+            />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/pixa-character" element={<PixaCharacter />} />
             <Route path="/pixa-weapon" element={<PixaWeapon />} />
             <Route path="/pixa-punk" element={<PixaPunk />} />
+            <Route
+              path="/product/:id"
+              element={
+                <>
+                  <ProductDetails allCards={allCards} />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/pixabuilder"
+              element={
+                <>
+                  <div className="container mx-auto px-4 pt-32 pb-16">
+                    <h1>PixaBuilder</h1>
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <>
+                  <div className="container mx-auto px-4 pt-32 pb-16">
+                    <h1>Login</h1>
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                <>
+                  <div className="container mx-auto px-4 pt-32 pb-16">
+                    <h1>Sign Up</h1>
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
           </Routes>
-
-          {/* Footer */}
-          <footer className="site-footer">
-            <div className="container mx-auto px-4 text-center">
-              <p className="text-sm">© 2024 PixelVerse. All rights reserved.</p>
-            </div>
-          </footer>
         </div>
       </div>
     </Router>
