@@ -89,39 +89,26 @@ const Home = () => (
     </header>
 
     {/* Guide Section - Full Width */}
-    <section className="relative overflow-hidden mb-24">
+    <section className="relative overflow-hidden w-screen -mx-4 sm:-mx-6 lg:-mx-8">
       {/* Ocean Background */}
       <div
-        className="absolute left-0 right-0 w-full z-0"
+        className="absolute inset-0 w-full h-full z-0"
         style={{
           backgroundImage: `url(${oceanBg})`,
           backgroundRepeat: "repeat",
           backgroundSize: "256px 256px",
           opacity: 1,
-          height: "120%",
-          top: "-10%",
-        }}
-      />
-
-      {/* Clouds Layer */}
-      <img
-        src={cloudsImg}
-        alt="Clouds"
-        className="absolute w-full h-auto left-0 right-0 z-10"
-        style={{
-          top: 0,
-          objectFit: "cover",
         }}
       />
 
       {/* Map Timeline Container */}
-      <div className="relative z-20 py-16 overflow-hidden">
+      <div className="relative z-10 w-full h-[80vh] flex items-center justify-center">
         {/* Desktop Map Timeline */}
-        <div className="hidden lg:block">
-          <div className="relative min-h-[500px] max-w-[900px] mx-auto px-8">
+        <div className="hidden lg:block w-full h-full">
+          <div className="relative w-full h-full max-w-[1000px] mx-auto flex items-center">
             {/* Map Path */}
             <svg
-              className="absolute inset-0 w-full h-full"
+              className="absolute inset-0 w-full h-[300px] my-auto"
               preserveAspectRatio="none"
               viewBox="0 0 900 300"
             >
@@ -162,97 +149,97 @@ const Home = () => (
             </svg>
 
             {/* Timeline Points */}
-            <div className="relative w-full">
-              {[
-                { title: "Connect & Explore", x: "11%", y: "150px" },
-                { title: "Create & Customize", x: "39%", y: "100px" },
-                { title: "Collect & Trade", x: "67%", y: "200px" },
-                { title: "Earn & Grow", x: "89%", y: "100px" },
-              ].map((item, index) => (
-                <div
-                  key={item.title}
-                  className="relative z-20"
-                  style={{
-                    position: "absolute",
-                    left: item.x,
-                    top: item.y,
-                    transform: "translate(-50%, -120%)",
-                  }}
-                >
+            <div className="absolute inset-0 flex items-center">
+              <div className="relative w-full h-[300px]">
+                {[
+                  { title: "Connect & Explore", x: "11%", y: "50%" },
+                  { title: "Create & Customize", x: "39%", y: "33%" },
+                  { title: "Collect & Trade", x: "67%", y: "66%" },
+                  { title: "Earn & Grow", x: "89%", y: "33%" },
+                ].map((item, index) => (
                   <div
-                    className={`timeline-pill p-4 text-center ${
-                      index % 2 === 0 ? "float-up" : "float-down"
-                    }`}
+                    key={item.title}
+                    className="absolute z-20"
+                    style={{
+                      left: item.x,
+                      top: item.y,
+                      transform: "translate(-50%, -50%)",
+                    }}
                   >
-                    <h3 className="text-lg font-bold text-light-text dark:text-dark-text whitespace-nowrap">
-                      {item.title}
-                    </h3>
+                    <div
+                      className={`timeline-pill p-4 text-center ${
+                        index % 2 === 0 ? "float-up" : "float-down"
+                      }`}
+                    >
+                      <h3 className="text-lg font-bold text-light-text dark:text-dark-text whitespace-nowrap">
+                        {item.title}
+                      </h3>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         {/* Mobile Map Timeline */}
-        <div className="lg:hidden px-4 sm:px-6">
-          <div className="relative min-h-[600px]">
+        <div className="lg:hidden w-full h-full">
+          <div className="relative h-full flex items-center justify-center px-4">
             {/* Mobile Map Path */}
             <svg
-              className="absolute h-full w-32"
+              className="absolute h-[80%] w-32 top-1/2 -translate-y-1/2"
               style={{ left: "50%", transform: "translateX(-50%)" }}
               preserveAspectRatio="none"
               viewBox="0 0 100 600"
             >
-              {/* Main Path */}
+              {/* Main Path - Setting opacity to 0 */}
               <path
                 d="M50,50 C60,100 40,150 50,200 C60,250 40,300 50,350 C60,400 40,450 50,500"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="4"
                 strokeDasharray="8 8"
-                className="text-light-primary dark:text-dark-primary"
+                className="text-light-primary dark:text-dark-primary opacity-0"
               />
               {/* Path Dots */}
               <circle
                 cx="50"
                 cy="50"
                 r="6"
-                className="fill-light-primary dark:fill-dark-primary"
+                className="fill-light-primary dark:fill-dark-primary opacity-0"
               />
               <circle
                 cx="50"
                 cy="200"
                 r="6"
-                className="fill-light-primary dark:fill-dark-primary"
+                className="fill-light-primary dark:fill-dark-primary opacity-0"
               />
               <circle
                 cx="50"
                 cy="350"
                 r="6"
-                className="fill-light-primary dark:fill-dark-primary"
+                className="fill-light-primary dark:fill-dark-primary opacity-0"
               />
               <circle
                 cx="50"
                 cy="500"
                 r="6"
-                className="fill-light-primary dark:fill-dark-primary"
+                className="fill-light-primary dark:fill-dark-primary opacity-0"
               />
             </svg>
 
             {/* Mobile Timeline Points */}
-            <div className="relative space-y-32 pt-8">
+            <div className="relative w-full h-[80%]">
               {[
-                { title: "Connect & Explore", y: "50px", align: "left" },
-                { title: "Create & Customize", y: "200px", align: "right" },
-                { title: "Collect & Trade", y: "350px", align: "left" },
-                { title: "Earn & Grow", y: "500px", align: "right" },
+                { title: "Connect & Explore", y: "20%", align: "left" },
+                { title: "Create & Customize", y: "40%", align: "right" },
+                { title: "Collect & Trade", y: "60%", align: "left" },
+                { title: "Earn & Grow", y: "80%", align: "right" },
               ].map((item, index) => (
                 <div
                   key={item.title}
-                  className="relative z-20"
+                  className="absolute z-20"
                   style={{
-                    position: "absolute",
                     top: item.y,
                     left: item.align === "left" ? "30%" : "70%",
                     transform: "translate(-50%, -50%)",
@@ -272,6 +259,37 @@ const Home = () => (
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Clouds Overlay */}
+      <div className="absolute inset-0 w-full h-full z-50">
+        <picture>
+          <source
+            media="(max-width: 768px)"
+            srcSet={cloudsImg}
+            className="w-full h-full"
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+            }}
+          />
+          <img
+            src={cloudsImg}
+            alt="Clouds"
+            className="w-full h-full"
+            style={{
+              objectFit: "cover",
+              width: "100vw",
+              height: "100%",
+              imageRendering: "pixelated",
+              position: "absolute",
+              left: "50%",
+              transform: "translateX(-50%)",
+              maxWidth: "none",
+            }}
+          />
+        </picture>
       </div>
     </section>
 
