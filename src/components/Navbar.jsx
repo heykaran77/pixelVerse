@@ -75,6 +75,59 @@ const NavLink = ({ to, children }) => {
   );
 };
 
+const DropdownMenu = ({ children, items }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="relative group">
+      <div
+        className="flex items-center cursor-pointer"
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
+      >
+        {children}
+        <svg
+          className={`ml-1 h-4 w-4 transition-transform duration-200 ${
+            isOpen ? "transform rotate-180" : ""
+          }`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </div>
+
+      {/* Desktop Dropdown */}
+      <div
+        className={`hidden md:block absolute z-[150] mt-2 w-48 rounded-lg shadow-lg py-1 bg-white dark:bg-[#1a1a1a] transform transition-all duration-200 ${
+          isOpen
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-2 pointer-events-none"
+        }`}
+        style={{ top: "100%" }}
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
+      >
+        {items.map((item, index) => (
+          <Link
+            key={index}
+            to={item.path}
+            className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800 text-light-text dark:text-dark-text hover:text-light-pink dark:hover:text-dark-pink transition-colors"
+          >
+            {item.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -125,8 +178,14 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const dropdownItems = [
+    { label: "PixaCharacter", path: "/pixa-character" },
+    { label: "PixaWeapon", path: "/pixa-weapon" },
+    { label: "PixaPunk", path: "/pixa-punk" },
+  ];
+
   return (
-    <nav className="fixed top-0 z-[100] w-full before:absolute before:inset-0 before:backdrop-blur-[8px] before:bg-white/10 dark:before:bg-black/10 before:shadow-lg before:[image-rendering:pixelated] overflow-hidden">
+    <nav className="fixed top-0 z-[100] w-full before:absolute before:inset-0 before:backdrop-blur-[8px] before:bg-white/10 dark:before:bg-black/10 before:shadow-lg before:[image-rendering:pixelated]">
       {/* Pixelated overlay */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==')] [background-size:2px_2px] opacity-50"></div>
 
@@ -161,6 +220,11 @@ const Navbar = () => {
               <NavLink to="/marketplace">
                 <span className="text-lg font-semibold">Marketplace</span>
               </NavLink>
+              <DropdownMenu items={dropdownItems}>
+                <span className="text-lg font-semibold text-light-text dark:text-dark-text hover:text-light-pink dark:hover:text-dark-pink transition-colors">
+                  Pixa Collxn
+                </span>
+              </DropdownMenu>
             </div>
           </div>
 
@@ -244,6 +308,26 @@ const Navbar = () => {
             >
               Marketplace
             </Link>
+
+            {/* Mobile Pixa Collxn Dropdown */}
+            <div className="space-y-2">
+              <div className="text-lg font-semibold text-light-text dark:text-dark-text">
+                Pixa Collxn
+              </div>
+              <div className="pl-4 space-y-2">
+                {dropdownItems.map((item, index) => (
+                  <Link
+                    key={index}
+                    to={item.path}
+                    className="block text-base text-light-text dark:text-dark-text hover:text-light-pink dark:hover:text-dark-pink transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
             <div className="pt-6 border-t border-light-border dark:border-dark-border">
               <Link
                 to="/login"

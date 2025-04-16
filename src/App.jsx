@@ -7,6 +7,13 @@ import mapLanding03Gif from "./assets/gifs/map_landing 03.gif";
 import mapLanding05Gif from "./assets/gifs/map_landing 05.gif";
 import cloudsImg from "./assets/gifs/clouds.png";
 import cloudsTopImg from "./assets/gifs/clouds_top.png";
+import axelGif from "./assets/gifs/axel.gif";
+
+// Import weapon images
+import DiamondSword from "./assets/gifs/Weapons/Diamond Sword.gif";
+import AngelAxe from "./assets/gifs/Weapons/Angel Axe.gif";
+import NebulaSword from "./assets/gifs/Weapons/Nebula Sword.gif";
+import SpellBook from "./assets/gifs/Weapons/Spell Bookl.gif";
 
 // Import character images
 import Garth from "./assets/Characters/Garth.png";
@@ -25,6 +32,187 @@ import Char13 from "./assets/Characters/13.gif";
 import Char67 from "./assets/Characters/67.png";
 import Char378 from "./assets/Characters/378.png";
 
+// Shuffle and prepare cards data
+const allCards = [
+  {
+    id: 1,
+    rarity: "Rare",
+    price: "0.5",
+    tagColor: "from-blue-500/50 to-blue-600/50",
+    image: Garth,
+    name: "Garth",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 2,
+    rarity: "Very Rare",
+    price: "1.2",
+    tagColor: "from-purple-500/50 to-purple-600/50",
+    image: PotionMaster,
+    name: "Potion Master",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 3,
+    rarity: "Trending",
+    price: "0.8",
+    tagColor: "from-orange-500/50 to-orange-600/50",
+    image: Luna,
+    name: "Luna",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 4,
+    rarity: "Common",
+    price: "0.3",
+    tagColor: "from-gray-500/50 to-gray-600/50",
+    image: Grimtooth,
+    name: "Grimtooth",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 5,
+    rarity: "Legendary",
+    price: "2.5",
+    tagColor: "from-yellow-500/50 to-yellow-600/50",
+    image: Grimbly,
+    name: "Grimbly",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 6,
+    rarity: "Rare",
+    price: "0.6",
+    tagColor: "from-blue-500/50 to-blue-600/50",
+    image: Grubnuk,
+    name: "Grubnuk",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 7,
+    rarity: "Trending",
+    price: "0.9",
+    tagColor: "from-orange-500/50 to-orange-600/50",
+    image: Poppy,
+    name: "Poppy",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 8,
+    rarity: "Very Rare",
+    price: "1.5",
+    tagColor: "from-purple-500/50 to-purple-600/50",
+    image: Auctioneer,
+    name: "Auctioneer",
+    tags: ["pixaChar"],
+  },
+  {
+    id: 9,
+    rarity: "Legendary",
+    price: "2.8",
+    tagColor: "from-yellow-500/50 to-yellow-600/50",
+    image: Char1,
+    name: "ByteRogue #77",
+    rounded: true,
+    tags: ["pixaPunk"],
+  },
+  {
+    id: 10,
+    rarity: "Very Rare",
+    price: "1.3",
+    tagColor: "from-purple-500/50 to-purple-600/50",
+    image: Char2,
+    name: "NeonSnarl",
+    rounded: true,
+    tags: ["pixaPunk"],
+  },
+  {
+    id: 11,
+    rarity: "Trending",
+    price: "0.7",
+    tagColor: "from-orange-500/50 to-orange-600/50",
+    image: Char3,
+    name: "Punkzilla VX",
+    rounded: true,
+    tags: ["pixaPunk"],
+  },
+  {
+    id: 12,
+    rarity: "Rare",
+    price: "0.55",
+    tagColor: "from-blue-500/50 to-blue-600/50",
+    image: Char6,
+    name: "GlitchFang",
+    rounded: true,
+    tags: ["pixaPunk"],
+  },
+  {
+    id: 13,
+    rarity: "Legendary",
+    price: "3.0",
+    tagColor: "from-yellow-500/50 to-yellow-600/50",
+    image: Char13,
+    name: "HexaHooligan",
+    rounded: true,
+    tags: ["pixaPunk"],
+  },
+  {
+    id: 14,
+    rarity: "Common",
+    price: "0.25",
+    tagColor: "from-gray-500/50 to-gray-600/50",
+    image: Char67,
+    name: "Z3r0Crust",
+    rounded: true,
+    tags: ["pixaPunk"],
+  },
+  {
+    id: 15,
+    rarity: "Very Rare",
+    price: "1.8",
+    tagColor: "from-purple-500/50 to-purple-600/50",
+    image: Char378,
+    name: "Crystal Mage",
+    tags: ["pixaPunk"],
+  },
+  {
+    id: 16,
+    rarity: "Legendary",
+    price: "4.5",
+    tagColor: "from-yellow-500/50 to-yellow-600/50",
+    image: DiamondSword,
+    name: "Diamond Sword",
+    tags: ["pixaWeapon"],
+  },
+  {
+    id: 17,
+    rarity: "Very Rare",
+    price: "2.8",
+    tagColor: "from-purple-500/50 to-purple-600/50",
+    image: AngelAxe,
+    name: "Angel Axe",
+    tags: ["pixaWeapon"],
+  },
+  {
+    id: 18,
+    rarity: "Legendary",
+    price: "5.0",
+    tagColor: "from-yellow-500/50 to-yellow-600/50",
+    image: NebulaSword,
+    name: "Nebula Sword",
+    tags: ["pixaWeapon"],
+  },
+  {
+    id: 19,
+    rarity: "Very Rare",
+    price: "3.2",
+    tagColor: "from-purple-500/50 to-purple-600/50",
+    image: SpellBook,
+    name: "Spell Book",
+    tags: ["pixaWeapon"],
+  },
+].sort(() => Math.random() - 0.5);
+
 // Placeholder components for routes
 const Gallery = () => (
   <div className="container mx-auto px-4 pt-20">
@@ -42,147 +230,286 @@ const Create = () => (
   </div>
 );
 
-const Marketplace = () => (
-  <div className="container mx-auto px-4 pt-20">
-    <h1 className="text-3xl font-bold text-light-text dark:text-dark-text">
-      Marketplace
-    </h1>
-  </div>
-);
+const Marketplace = () => {
+  const [selectedFilter, setSelectedFilter] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [priceRange, setPriceRange] = useState({ min: 0, max: 5 });
+  const [selectedRarities, setSelectedRarities] = useState([]);
+  const [sortOption, setSortOption] = useState("default");
+
+  // Get unique rarities from allCards
+  const rarities = [...new Set(allCards.map((card) => card.rarity))];
+
+  // Handle rarity toggle
+  const toggleRarity = (rarity) => {
+    setSelectedRarities((prev) =>
+      prev.includes(rarity)
+        ? prev.filter((r) => r !== rarity)
+        : [...prev, rarity]
+    );
+  };
+
+  // Filter and sort cards
+  const filteredCards = allCards
+    .filter((card) => {
+      const matchesFilter =
+        selectedFilter === "all" ||
+        (selectedFilter === "pixaChar" && card.tags.includes("pixaChar")) ||
+        (selectedFilter === "pixaWeapon" && card.tags.includes("pixaWeapon")) ||
+        (selectedFilter === "pixaPunk" && card.tags.includes("pixaPunk"));
+
+      const matchesSearch =
+        card.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        card.rarity.toLowerCase().includes(searchTerm.toLowerCase());
+
+      const matchesPrice =
+        parseFloat(card.price) >= priceRange.min &&
+        parseFloat(card.price) <= priceRange.max;
+
+      const matchesRarity =
+        selectedRarities.length === 0 || selectedRarities.includes(card.rarity);
+
+      return matchesFilter && matchesSearch && matchesPrice && matchesRarity;
+    })
+    .sort((a, b) => {
+      switch (sortOption) {
+        case "price-low-high":
+          return parseFloat(a.price) - parseFloat(b.price);
+        case "price-high-low":
+          return parseFloat(b.price) - parseFloat(a.price);
+        case "rarity":
+          return rarities.indexOf(a.rarity) - rarities.indexOf(b.rarity);
+        default:
+          return 0;
+      }
+    });
+
+  return (
+    <div className="container mx-auto px-4 pt-32 pb-16">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 md:mb-0 text-light-text dark:text-dark-text">
+          Marketplace
+        </h1>
+      </div>
+
+      {/* Filters Section */}
+      <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 mb-8">
+        {/* Filters Sidebar */}
+        <div className="bg-[#0c0c0c] dark:bg-gray-800 p-6 rounded-lg">
+          <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text">
+            Filters
+          </h2>
+
+          {/* Collection Filter */}
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-3 text-light-text dark:text-dark-text">
+              Collection
+            </h3>
+            <select
+              value={selectedFilter}
+              onChange={(e) => setSelectedFilter(e.target.value)}
+              className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
+            >
+              <option value="all">All Items</option>
+              <option value="pixaChar">Characters</option>
+              <option value="pixaWeapon">Weapons</option>
+              <option value="pixaPunk">Punks</option>
+            </select>
+          </div>
+
+          {/* Price Range Filter */}
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-3 text-light-text dark:text-dark-text">
+              Price Range (ETH)
+            </h3>
+            <div className="flex gap-4">
+              <input
+                type="number"
+                min="0"
+                max={priceRange.max}
+                value={priceRange.min}
+                onChange={(e) =>
+                  setPriceRange((prev) => ({
+                    ...prev,
+                    min: parseFloat(e.target.value),
+                  }))
+                }
+                className="w-full px-3 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary"
+                placeholder="Min"
+              />
+              <input
+                type="number"
+                min={priceRange.min}
+                value={priceRange.max}
+                onChange={(e) =>
+                  setPriceRange((prev) => ({
+                    ...prev,
+                    max: parseFloat(e.target.value),
+                  }))
+                }
+                className="w-full px-3 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary"
+                placeholder="Max"
+              />
+            </div>
+          </div>
+
+          {/* Rarity Filter */}
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-3 text-light-text dark:text-dark-text">
+              Rarity
+            </h3>
+            <div className="space-y-2">
+              {rarities.map((rarity) => (
+                <label
+                  key={rarity}
+                  className="flex items-center gap-2 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    checked={selectedRarities.includes(rarity)}
+                    onChange={() => toggleRarity(rarity)}
+                    className="form-checkbox h-4 w-4 text-light-primary dark:text-dark-primary rounded"
+                  />
+                  <span className="text-light-text dark:text-dark-text">
+                    {rarity}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Clear Filters Button */}
+          <button
+            onClick={() => {
+              setSelectedFilter("all");
+              setPriceRange({ min: 0, max: 5 });
+              setSelectedRarities([]);
+              setSortOption("default");
+              setSearchTerm("");
+            }}
+            className="w-full pixel-borders pixel-borders-secondary px-4 py-2 mt-4"
+          >
+            Clear Filters
+          </button>
+        </div>
+
+        {/* Main Content */}
+        <div>
+          {/* Search and Sort Bar */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-6">
+            {/* Search Bar */}
+            <div className="relative flex-grow">
+              <input
+                type="text"
+                placeholder="Search cards..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary"
+              />
+            </div>
+
+            {/* Sort Dropdown */}
+            <select
+              value={sortOption}
+              onChange={(e) => setSortOption(e.target.value)}
+              className="px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-primary cursor-pointer"
+            >
+              <option value="default">Sort by</option>
+              <option value="price-low-high">Price: Low to High</option>
+              <option value="price-high-low">Price: High to Low</option>
+              <option value="rarity">Rarity</option>
+            </select>
+          </div>
+
+          {/* Results Count */}
+          <p className="text-light-muted dark:text-dark-muted mb-6">
+            Showing {filteredCards.length} items
+          </p>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredCards.map((card) => (
+              <div
+                key={card.id}
+                className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800"
+              >
+                <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
+                  <img
+                    src={card.image}
+                    alt={card.name}
+                    className={`w-full h-full object-contain p-4 image-pixelated ${
+                      card.rounded ? "rounded-2xl" : ""
+                    }`}
+                  />
+                  {/* Tags Container */}
+                  <div className="absolute top-3 left-3 flex flex-col gap-2">
+                    {/* Rarity Tag */}
+                    <span
+                      className={`rarity-pill bg-gradient-to-r ${card.tagColor}`}
+                    >
+                      {card.rarity}
+                    </span>
+                    {/* Collection Tags */}
+                    {card.tags?.includes("pixaChar") && (
+                      <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
+                        pixaChar
+                      </span>
+                    )}
+                    {card.tags?.includes("pixaWeapon") && (
+                      <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
+                        pixaWeapon
+                      </span>
+                    )}
+                    {card.tags?.includes("pixaPunk") && (
+                      <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
+                        pixaPunk
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
+                  {card.name}
+                </h3>
+                <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
+                  Created by Artist #{card.id}
+                </p>
+
+                {/* Price Tag */}
+                <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
+                  {card.price} ETH
+                </p>
+
+                {/* Buttons Container */}
+                <div className="flex flex-col gap-3">
+                  <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
+                    Place Bid
+                  </button>
+                  <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* No Results Message */}
+          {filteredCards.length === 0 && (
+            <div className="text-center py-16">
+              <p className="text-xl text-light-muted dark:text-dark-muted">
+                No items found matching your criteria
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [showMore, setShowMore] = useState(false);
-
-  // Shuffle and prepare cards data
-  const allCards = [
-    {
-      id: 1,
-      rarity: "Rare",
-      price: "0.5",
-      tagColor: "from-blue-500/50 to-blue-600/50",
-      image: Garth,
-      name: "Garth",
-    },
-    {
-      id: 2,
-      rarity: "Very Rare",
-      price: "1.2",
-      tagColor: "from-purple-500/50 to-purple-600/50",
-      image: PotionMaster,
-      name: "Potion Master",
-    },
-    {
-      id: 3,
-      rarity: "Trending",
-      price: "0.8",
-      tagColor: "from-orange-500/50 to-orange-600/50",
-      image: Luna,
-      name: "Luna",
-    },
-    {
-      id: 4,
-      rarity: "Common",
-      price: "0.3",
-      tagColor: "from-gray-500/50 to-gray-600/50",
-      image: Grimtooth,
-      name: "Grimtooth",
-    },
-    {
-      id: 5,
-      rarity: "Legendary",
-      price: "2.5",
-      tagColor: "from-yellow-500/50 to-yellow-600/50",
-      image: Grimbly,
-      name: "Grimbly",
-    },
-    {
-      id: 6,
-      rarity: "Rare",
-      price: "0.6",
-      tagColor: "from-blue-500/50 to-blue-600/50",
-      image: Grubnuk,
-      name: "Grubnuk",
-    },
-    {
-      id: 7,
-      rarity: "Trending",
-      price: "0.9",
-      tagColor: "from-orange-500/50 to-orange-600/50",
-      image: Poppy,
-      name: "Poppy",
-    },
-    {
-      id: 8,
-      rarity: "Very Rare",
-      price: "1.5",
-      tagColor: "from-purple-500/50 to-purple-600/50",
-      image: Auctioneer,
-      name: "Auctioneer",
-    },
-    {
-      id: 9,
-      rarity: "Legendary",
-      price: "2.8",
-      tagColor: "from-yellow-500/50 to-yellow-600/50",
-      image: Char1,
-      name: "ByteRogue #77",
-      rounded: true,
-    },
-    {
-      id: 10,
-      rarity: "Very Rare",
-      price: "1.3",
-      tagColor: "from-purple-500/50 to-purple-600/50",
-      image: Char2,
-      name: "NeonSnarl",
-      rounded: true,
-    },
-    {
-      id: 11,
-      rarity: "Trending",
-      price: "0.7",
-      tagColor: "from-orange-500/50 to-orange-600/50",
-      image: Char3,
-      name: "Punkzilla VX",
-      rounded: true,
-    },
-    {
-      id: 12,
-      rarity: "Rare",
-      price: "0.55",
-      tagColor: "from-blue-500/50 to-blue-600/50",
-      image: Char6,
-      name: "GlitchFang",
-      rounded: true,
-    },
-    {
-      id: 13,
-      rarity: "Legendary",
-      price: "3.0",
-      tagColor: "from-yellow-500/50 to-yellow-600/50",
-      image: Char13,
-      name: "HexaHooligan",
-      rounded: true,
-    },
-    {
-      id: 14,
-      rarity: "Common",
-      price: "0.25",
-      tagColor: "from-gray-500/50 to-gray-600/50",
-      image: Char67,
-      name: "Z3r0Crust",
-      rounded: true,
-    },
-    {
-      id: 15,
-      rarity: "Very Rare",
-      price: "1.8",
-      tagColor: "from-purple-500/50 to-purple-600/50",
-      image: Char378,
-      name: "Crystal Mage",
-    },
-  ].sort(() => Math.random() - 0.5);
 
   return (
     <>
@@ -488,6 +815,150 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Products Section */}
+      <section className="relative py-24 bg-light-section dark:bg-dark-section">
+        {/* Top Cloud Frame */}
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none"
+          style={{ zIndex: 10 }}
+        >
+          <img
+            src={cloudsTopImg}
+            alt="Cloud Frame"
+            className="w-full"
+            style={{
+              imageRendering: "pixelated",
+              transform: "rotate(180deg)",
+            }}
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-16 pt-20">
+            <h2 className="text-5xl md:text-7xl font-bold mb-4 text-light-text dark:text-dark-text">
+              The Pixa Collxn
+            </h2>
+            <p className="text-xl text-light-muted dark:text-dark-muted">
+              Discover our unique pixel art collections
+            </p>
+          </div>
+
+          {/* Product Categories Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Category 1: Characters */}
+            <Link
+              to="/pixa-character"
+              className="featured-card group cursor-pointer"
+            >
+              <div className="relative aspect-square mb-4 overflow-hidden rounded-lg">
+                <img
+                  src={Garth}
+                  alt="Character Collection"
+                  className="w-full h-full object-cover image-pixelated transform group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    PixaCharacters
+                  </h3>
+                </div>
+              </div>
+            </Link>
+
+            {/* Category 2: Weapons */}
+            <Link
+              to="/pixa-weapon"
+              className="featured-card group cursor-pointer"
+            >
+              <div className="relative aspect-square mb-4 overflow-hidden rounded-lg">
+                <img
+                  src={axelGif}
+                  alt="Weapons Collection"
+                  className="w-full h-full object-cover image-pixelated transform group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    PixaWeapons
+                  </h3>
+                </div>
+              </div>
+            </Link>
+
+            {/* Category 3: PixaPunk */}
+            <Link
+              to="/pixa-punk"
+              className="featured-card group cursor-pointer"
+            >
+              <div className="relative aspect-square mb-4 overflow-hidden rounded-lg">
+                <img
+                  src={Char13}
+                  alt="PixaPunk Collection"
+                  className="w-full h-full object-cover image-pixelated transform group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    PixaPunk
+                  </h3>
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          {/* Stats Section */}
+          <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <h4 className="text-3xl font-bold text-light-primary dark:text-dark-primary mb-2">
+                1.2K+
+              </h4>
+              <p className="text-light-muted dark:text-dark-muted">
+                Unique Items
+              </p>
+            </div>
+            <div className="text-center">
+              <h4 className="text-3xl font-bold text-light-primary dark:text-dark-primary mb-2">
+                3.4K+
+              </h4>
+              <p className="text-light-muted dark:text-dark-muted">
+                Active Users
+              </p>
+            </div>
+            <div className="text-center">
+              <h4 className="text-3xl font-bold text-light-primary dark:text-dark-primary mb-2">
+                98%
+              </h4>
+              <p className="text-light-muted dark:text-dark-muted">
+                Success Rate
+              </p>
+            </div>
+            <div className="text-center">
+              <h4 className="text-3xl font-bold text-light-primary dark:text-dark-primary mb-2">
+                240+
+              </h4>
+              <p className="text-light-muted dark:text-dark-muted">
+                Daily Trades
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Cloud Frame */}
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none"
+          style={{ zIndex: 10 }}
+        >
+          <img
+            src={cloudsTopImg}
+            alt="Bottom Cloud Frame"
+            className="w-full"
+            style={{
+              imageRendering: "pixelated",
+            }}
+          />
+        </div>
+      </section>
+
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-48 relative">
         {/* Cloud Top Frame */}
@@ -508,7 +979,7 @@ const Home = () => {
 
         <section className="mb-16">
           <h2 className="text-5xl lg:text-6xl font-bold mb-8 text-gray-900 dark:text-white">
-            The PixaArt Collection
+            The PixaArt Gallery
           </h2>
 
           {/* View More Link - Mobile Only */}
@@ -552,8 +1023,9 @@ const Home = () => {
                         allCards[index].rounded ? "rounded-2xl" : ""
                       }`}
                     />
-                    {/* Rarity Tag */}
-                    <div className="absolute top-3 left-3">
+                    {/* Tags Container */}
+                    <div className="absolute top-3 left-3 flex flex-col gap-2">
+                      {/* Rarity Tag */}
                       <span
                         className={`
                         rarity-pill bg-gradient-to-r ${allCards[index].tagColor}
@@ -561,12 +1033,24 @@ const Home = () => {
                       >
                         {allCards[index].rarity}
                       </span>
-                    </div>
-                    {/* Pixel Art Tag */}
-                    <div className="absolute bottom-3 right-3">
-                      <span className="rarity-pill bg-gradient-to-r from-indigo-500/30 to-indigo-600/30 text-sm">
-                        pixel art
-                      </span>
+                      {/* PixaChar Tag */}
+                      {allCards[index].tags?.includes("pixaChar") && (
+                        <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
+                          pixaChar
+                        </span>
+                      )}
+                      {/* PixaWeapon Tag */}
+                      {allCards[index].tags?.includes("pixaWeapon") && (
+                        <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
+                          pixaWeapon
+                        </span>
+                      )}
+                      {/* PixaPunk Tag */}
+                      {allCards[index].tags?.includes("pixaPunk") && (
+                        <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
+                          pixaPunk
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -643,21 +1127,34 @@ const Home = () => {
                       item.rounded ? "rounded-2xl" : ""
                     }`}
                   />
-                  {/* Rarity Tag */}
-                  <div className="absolute top-3 left-3">
+                  {/* Tags Container */}
+                  <div className="absolute top-3 left-3 flex flex-col gap-2">
+                    {/* Rarity Tag */}
                     <span
                       className={`
-                    rarity-pill bg-gradient-to-r ${item.tagColor}
-                  `}
+                      rarity-pill bg-gradient-to-r ${item.tagColor}
+                    `}
                     >
                       {item.rarity}
                     </span>
-                  </div>
-                  {/* Pixel Art Tag */}
-                  <div className="absolute bottom-3 right-3">
-                    <span className="rarity-pill bg-gradient-to-r from-indigo-500/30 to-indigo-600/30 text-sm">
-                      pixel art
-                    </span>
+                    {/* PixaChar Tag */}
+                    {item.tags?.includes("pixaChar") && (
+                      <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
+                        pixaChar
+                      </span>
+                    )}
+                    {/* PixaWeapon Tag */}
+                    {item.tags?.includes("pixaWeapon") && (
+                      <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
+                        pixaWeapon
+                      </span>
+                    )}
+                    {/* PixaPunk Tag */}
+                    {item.tags?.includes("pixaPunk") && (
+                      <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
+                        pixaPunk
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -691,6 +1188,178 @@ const Home = () => {
   );
 };
 
+// Collection page components
+const PixaCharacter = () => {
+  const characterCards = allCards.filter((card) =>
+    card.tags.includes("pixaChar")
+  );
+
+  return (
+    <div className="container mx-auto px-4 pt-32">
+      <h1 className="text-4xl md:text-6xl font-bold mb-8 text-light-text dark:text-dark-text">
+        PixaCharacter Collection
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {characterCards.map((card) => (
+          <div
+            key={card.id}
+            className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800"
+          >
+            <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
+              <img
+                src={card.image}
+                alt={card.name}
+                className="w-full h-full object-contain p-4 image-pixelated"
+              />
+              <div className="absolute top-3 left-3 flex flex-col gap-2">
+                <span
+                  className={`rarity-pill bg-gradient-to-r ${card.tagColor}`}
+                >
+                  {card.rarity}
+                </span>
+                <span className="rarity-pill bg-gradient-to-r from-pink-500/50 to-pink-600/50">
+                  pixaChar
+                </span>
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
+              {card.name}
+            </h3>
+            <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
+              Created by Artist #{card.id}
+            </p>
+            <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
+              {card.price} ETH
+            </p>
+            <div className="flex flex-col gap-3">
+              <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
+                Place Bid
+              </button>
+              <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
+                View Details
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const PixaWeapon = () => {
+  const weaponCards = allCards.filter((card) =>
+    card.tags.includes("pixaWeapon")
+  );
+
+  return (
+    <div className="container mx-auto px-4 pt-32">
+      <h1 className="text-4xl md:text-6xl font-bold mb-8 text-light-text dark:text-dark-text">
+        PixaWeapon Collection
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {weaponCards.map((card) => (
+          <div
+            key={card.id}
+            className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800"
+          >
+            <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
+              <img
+                src={card.image}
+                alt={card.name}
+                className="w-full h-full object-contain p-4 image-pixelated"
+              />
+              <div className="absolute top-3 left-3 flex flex-col gap-2">
+                <span
+                  className={`rarity-pill bg-gradient-to-r ${card.tagColor}`}
+                >
+                  {card.rarity}
+                </span>
+                <span className="rarity-pill bg-gradient-to-r from-amber-500/50 to-amber-600/50">
+                  pixaWeapon
+                </span>
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
+              {card.name}
+            </h3>
+            <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
+              Created by Artist #{card.id}
+            </p>
+            <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
+              {card.price} ETH
+            </p>
+            <div className="flex flex-col gap-3">
+              <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
+                Place Bid
+              </button>
+              <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
+                View Details
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const PixaPunk = () => {
+  const punkCards = allCards.filter((card) => card.tags.includes("pixaPunk"));
+
+  return (
+    <div className="container mx-auto px-4 pt-32">
+      <h1 className="text-4xl md:text-6xl font-bold mb-8 text-light-text dark:text-dark-text">
+        PixaPunk Collection
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {punkCards.map((card) => (
+          <div
+            key={card.id}
+            className="featured-card p-6 bg-[#0c0c0c] dark:bg-gray-800"
+          >
+            <div className="relative aspect-square mb-4 bg-gray-800 dark:bg-gray-700 overflow-hidden rounded-lg image-container">
+              <img
+                src={card.image}
+                alt={card.name}
+                className={`w-full h-full object-contain p-4 image-pixelated ${
+                  card.rounded ? "rounded-2xl" : ""
+                }`}
+              />
+              <div className="absolute top-3 left-3 flex flex-col gap-2">
+                <span
+                  className={`rarity-pill bg-gradient-to-r ${card.tagColor}`}
+                >
+                  {card.rarity}
+                </span>
+                <span className="rarity-pill bg-gradient-to-r from-cyan-500/50 to-cyan-600/50">
+                  pixaPunk
+                </span>
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-2 text-[#f5f5f5] dark:text-white">
+              {card.name}
+            </h3>
+            <p className="text-[#f5f5f5]/80 dark:text-gray-300 mb-4">
+              Created by Artist #{card.id}
+            </p>
+            <p className="text-lg font-bold mb-4 text-light-primary dark:text-dark-primary">
+              {card.price} ETH
+            </p>
+            <div className="flex flex-col gap-3">
+              <button className="pixel-borders pixel-borders-primary px-4 py-2 w-full">
+                Place Bid
+              </button>
+              <button className="pixel-borders pixel-borders-secondary px-4 py-2 w-full">
+                View Details
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
 
@@ -704,6 +1373,9 @@ function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/create" element={<Create />} />
             <Route path="/marketplace" element={<Marketplace />} />
+            <Route path="/pixa-character" element={<PixaCharacter />} />
+            <Route path="/pixa-weapon" element={<PixaWeapon />} />
+            <Route path="/pixa-punk" element={<PixaPunk />} />
           </Routes>
 
           {/* Footer */}
