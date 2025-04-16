@@ -126,7 +126,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 before:absolute before:inset-0 before:backdrop-blur-[8px] before:bg-white/10 dark:before:bg-black/10 before:shadow-lg before:[image-rendering:pixelated] relative overflow-hidden">
+    <nav className="fixed top-0 z-[100] w-full before:absolute before:inset-0 before:backdrop-blur-[8px] before:bg-white/10 dark:before:bg-black/10 before:shadow-lg before:[image-rendering:pixelated] overflow-hidden">
       {/* Pixelated overlay */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==')] [background-size:2px_2px] opacity-50"></div>
 
