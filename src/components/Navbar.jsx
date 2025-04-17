@@ -348,7 +348,7 @@ const Navbar = () => {
               <div className="flex items-center space-x-3 ml-4">
                 <Link
                   to="/login"
-                  className="text-light-text dark:text-dark-text hover:text-light-pink dark:hover:text-dark-pink transition-colors"
+                  className="hidden md:inline-block text-light-text dark:text-dark-text hover:text-light-pink dark:hover:text-dark-pink transition-colors"
                 >
                   Login
                 </Link>

@@ -28,8 +28,8 @@ const Signup = () => {
 
   return (
     <div className="w-full">
-      <div className="bg-gray-800 pixel-borders p-8 rounded-lg shadow-xl shadow-black/25">
-        <h2 className="text-4xl font-bold mb-8 text-light-text dark:text-dark-text text-center">
+      <div className="bg-gray-800 dark:bg-gray-800 text-white pixel-borders p-8 rounded-lg shadow-xl shadow-black/25">
+        <h2 className="text-4xl font-bold mb-8 text-white text-center">
           Join PixelVerse
         </h2>
 
@@ -43,7 +43,7 @@ const Signup = () => {
           <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-light-text dark:text-dark-text mb-2 font-medium"
+              className="block text-white mb-2 font-medium"
             >
               Email
             </label>
@@ -61,7 +61,7 @@ const Signup = () => {
           <div className="mb-4">
             <label
               htmlFor="password"
-              className="block text-light-text dark:text-dark-text mb-2 font-medium"
+              className="block text-white mb-2 font-medium"
             >
               Password
             </label>
@@ -74,7 +74,7 @@ const Signup = () => {
               placeholder="Enter your password"
               required
             />
-            <p className="text-xs text-gray-400 mt-1">
+            <p className="text-xs text-gray-300 mt-1">
               Password must be at least 6 characters
             </p>
           </div>
@@ -82,7 +82,7 @@ const Signup = () => {
           <div className="mb-6">
             <label
               htmlFor="confirmPassword"
-              className="block text-light-text dark:text-dark-text mb-2 font-medium"
+              className="block text-white mb-2 font-medium"
             >
               Confirm Password
             </label>
@@ -106,7 +106,7 @@ const Signup = () => {
           </button>
         </form>
 
-        <div className="mt-8 text-center text-light-text dark:text-dark-text">
+        <div className="mt-8 text-center text-white">
           <p className="mb-2">
             Already have an account?{" "}
             <Link
@@ -116,7 +116,7 @@ const Signup = () => {
               Login
             </Link>
           </p>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-gray-300">
             By signing up, you agree to our Terms of Service and Privacy Policy
           </p>
         </div>

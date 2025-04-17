@@ -1498,21 +1498,7 @@ const Home = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-48 relative">
-        {/* Cloud Top Frame */}
-        <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none"
-          style={{ zIndex: 10 }}
-        >
-          <img
-            src={cloudsTopImg}
-            alt="Cloud Frame"
-            className="w-full"
-            style={{
-              imageRendering: "pixelated",
-              transform: "rotate(180deg)",
-            }}
-          />
-        </div>
+        {/* Cloud Top Frame - REMOVED */}
 
         <section className="mb-16">
           <h2 className="text-5xl lg:text-6xl font-bold mb-8 text-gray-900 dark:text-white">
@@ -1720,39 +1706,12 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Bottom Cloud Frame */}
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none"
-          style={{ zIndex: 10 }}
-        >
-          <img
-            src={cloudsTopImg}
-            alt="Bottom Cloud Frame"
-            className="w-full"
-            style={{
-              imageRendering: "pixelated",
-            }}
-          />
-        </div>
+        {/* Bottom Cloud Frame - REMOVED */}
       </main>
 
       {/* Leaderboards Section */}
       <div className="relative">
-        {/* Top Cloud Frame */}
-        <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none"
-          style={{ zIndex: 10 }}
-        >
-          <img
-            src={cloudsTopImg}
-            alt="Cloud Frame"
-            className="w-full"
-            style={{
-              imageRendering: "pixelated",
-              transform: "rotate(180deg)",
-            }}
-          />
-        </div>
+        {/* Top Cloud Frame - REMOVED */}
 
         <div className="container mx-auto px-4 py-24 pt-48">
           <h2 className="text-5xl md:text-7xl font-bold mb-12 text-light-text dark:text-dark-text pl-6">
@@ -1878,20 +1837,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Bottom Cloud Frame */}
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none"
-          style={{ zIndex: 10 }}
-        >
-          <img
-            src={cloudsTopImg}
-            alt="Bottom Cloud Frame"
-            className="w-full"
-            style={{
-              imageRendering: "pixelated",
-            }}
-          />
-        </div>
+        {/* Bottom Cloud Frame - REMOVED */}
       </div>
 
       {/* Footer */}
