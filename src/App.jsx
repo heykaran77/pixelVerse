@@ -2217,7 +2217,10 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route
+              path="/product/:id"
+              element={<ProductDetails allCards={allCards} />}
+            />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/pixa-character" element={<PixaCharacter />} />
             <Route path="/pixa-weapon" element={<PixaWeapon />} />
