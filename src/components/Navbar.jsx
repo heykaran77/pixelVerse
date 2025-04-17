@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import timmyGif from "../assets/NPCs/timmy.gif";
 import cornwellGif from "../assets/NPCs/cornwell.gif";
 import fatChickenGif from "../assets/NPCs/fat_chicken.gif";
-import logoGif from "../assets/gifs/logo.gif";
+import logoGif from "../assets/Pixel Verse logo.gif";
+import { useAuth } from "../context/AuthContext";
 
 const npcs = [timmyGif, cornwellGif, fatChickenGif];
 
@@ -153,6 +154,7 @@ const DropdownMenu = ({ children, items }) => {
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
       const stored = localStorage.getItem("theme");
@@ -163,6 +165,10 @@ const Navbar = () => {
     }
     return false;
   });
+
+  const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
+  const profileDropdownRef = useRef(null);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -201,6 +207,33 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const handleLogout = () => {
+    logout();
+    setIsProfileOpen(false);
+    navigate("/");
+  };
+
+  const toggleProfileDropdown = () => {
+    setIsProfileOpen(!isProfileOpen);
+  };
+
+  // Close profile dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        profileDropdownRef.current &&
+        !profileDropdownRef.current.contains(event.target)
+      ) {
+        setIsProfileOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const dropdownItems = [
     { label: "PixaCharacter", path: "/pixa-character" },
     { label: "PixaWeapon", path: "/pixa-weapon" },
@@ -216,7 +249,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex items-center">
-            <div className="w-12 h-12 overflow-hidden">
+            <div className="w-16 h-16 overflow-hidden">
               <img
                 src={logoGif}
                 alt="PixelVerse Logo"
@@ -251,98 +284,161 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Right Section */}
-          <div className="hidden md:flex items-center space-x-5">
+          {/* Right Side Actions */}
+          <div className="flex items-center">
+            {/* Dark Mode Toggle */}
             <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-            <Link
-              to="/login"
-              className="text-lg font-semibold text-light-text dark:text-dark-text hover:text-light-primary dark:hover:text-dark-primary transition-colors"
-            >
-              Login
-            </Link>
-            <PeekingButton
-              to="/signup"
-              variant="filled"
-              className="text-lg font-semibold"
-            >
-              Sign Up
-            </PeekingButton>
-          </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-4">
-            <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg hover:bg-white/20 dark:hover:bg-white/5 transition-colors"
-              aria-label="Toggle mobile menu"
-            >
-              <div className="space-y-1.5">
+            {/* Profile / Auth */}
+            {currentUser ? (
+              <div className="relative ml-4" ref={profileDropdownRef}>
+                <button
+                  className="flex items-center space-x-2 text-light-text dark:text-dark-text hover:text-light-pink dark:hover:text-dark-pink transition-colors"
+                  onClick={toggleProfileDropdown}
+                >
+                  <div className="w-8 h-8 bg-light-primary dark:bg-dark-primary rounded-full flex items-center justify-center text-white">
+                    {currentUser.displayName
+                      ? currentUser.displayName.charAt(0).toUpperCase()
+                      : "U"}
+                  </div>
+                  <span className="hidden md:block font-medium">
+                    {currentUser.displayName || "User"}
+                  </span>
+                  <svg
+                    className={`h-4 w-4 transition-transform duration-300 ${
+                      isProfileOpen ? "transform rotate-180" : ""
+                    }`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+
+                {/* Profile Dropdown */}
                 <div
-                  className={`w-6 h-0.5 bg-light-text dark:bg-dark-text transition-transform duration-300 ${
-                    isMenuOpen ? "transform rotate-45 translate-y-2" : ""
+                  className={`absolute right-0 mt-2 w-48 bg-white dark:bg-gray-900 rounded-lg shadow-lg py-1 z-[150] transition-all duration-200 ${
+                    isProfileOpen
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 -translate-y-2 pointer-events-none"
                   }`}
-                ></div>
-                <div
-                  className={`w-6 h-0.5 bg-light-text dark:bg-dark-text transition-opacity duration-300 ${
-                    isMenuOpen ? "opacity-0" : ""
-                  }`}
-                ></div>
-                <div
-                  className={`w-6 h-0.5 bg-light-text dark:bg-dark-text transition-transform duration-300 ${
-                    isMenuOpen ? "transform -rotate-45 -translate-y-2" : ""
-                  }`}
-                ></div>
+                >
+                  <Link
+                    to="/profile"
+                    className="block px-4 py-2 text-sm text-light-text dark:text-dark-text hover:bg-gray-100 dark:hover:bg-gray-800"
+                    onClick={() => setIsProfileOpen(false)}
+                  >
+                    Profile
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full text-left px-4 py-2 text-sm text-light-text dark:text-dark-text hover:bg-gray-100 dark:hover:bg-gray-800"
+                  >
+                    Logout
+                  </button>
+                </div>
               </div>
-            </button>
+            ) : (
+              <div className="flex items-center space-x-3 ml-4">
+                <Link
+                  to="/login"
+                  className="text-light-text dark:text-dark-text hover:text-light-pink dark:hover:text-dark-pink transition-colors"
+                >
+                  Login
+                </Link>
+                <PeekingButton
+                  to="/signup"
+                  variant="filled"
+                  className="hidden md:inline-block"
+                >
+                  Sign Up
+                </PeekingButton>
+              </div>
+            )}
+
+            {/* Mobile Menu Button */}
+            <div className="flex md:hidden ml-3">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-light-text dark:text-dark-text hover:text-light-pink dark:hover:text-dark-pink transition-colors"
+              >
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  {isMenuOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16m-7 6h7"
+                    />
+                  )}
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Navigation Menu */}
-        <div
-          className={`mobile-menu-container md:hidden fixed top-16 left-0 right-0 bg-[#f5f5f5] dark:bg-[#0c0c0c] transition-all duration-300 ease-in-out ${
-            isMenuOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none translate-y-1"
-          }`}
-        >
-          {/* Pixelated overlay for mobile menu */}
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==')] [background-size:2px_2px] opacity-50"></div>
-
-          <div className="relative py-6 px-4 space-y-6">
+      {/* Mobile Menu */}
+      <div
+        className={`mobile-menu-container md:hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen
+            ? "max-h-screen opacity-100"
+            : "max-h-0 opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="relative bg-white dark:bg-gray-900 shadow-lg border-t border-gray-200 dark:border-gray-800 px-4 py-5">
+          <div className="flex flex-col space-y-5">
             <Link
               to="/"
-              className="block text-lg font-semibold text-light-text dark:text-dark-text hover:text-light-pink dark:hover:text-dark-pink transition-colors"
+              className="text-lg font-medium text-light-text dark:text-dark-text"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
             <Link
               to="/pixabuilder"
-              className="block text-lg font-semibold text-light-text dark:text-dark-text hover:text-light-pink dark:hover:text-dark-pink transition-colors"
+              className="text-lg font-medium text-light-text dark:text-dark-text"
               onClick={() => setIsMenuOpen(false)}
             >
               PixaBuilder
             </Link>
             <Link
               to="/marketplace"
-              className="block text-lg font-semibold text-light-text dark:text-dark-text hover:text-light-pink dark:hover:text-dark-pink transition-colors"
+              className="text-lg font-medium text-light-text dark:text-dark-text"
               onClick={() => setIsMenuOpen(false)}
             >
               Marketplace
             </Link>
 
-            {/* Mobile Pixa Collxn Dropdown */}
-            <div className="space-y-2">
-              <div className="text-lg font-semibold text-light-text dark:text-dark-text">
-                Pixa Collxn
-              </div>
-              <div className="pl-4 space-y-2">
+            {/* Mobile Collections Dropdown */}
+            <div className="py-2">
+              <p className="text-lg font-medium text-light-text dark:text-dark-text mb-2">
+                Pixa Collections
+              </p>
+              <div className="pl-4 flex flex-col space-y-2">
                 {dropdownItems.map((item, index) => (
                   <Link
                     key={index}
                     to={item.path}
-                    className="block text-base text-light-text dark:text-dark-text hover:text-light-pink dark:hover:text-dark-pink transition-colors"
+                    className="text-light-text dark:text-dark-text"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
@@ -351,22 +447,47 @@ const Navbar = () => {
               </div>
             </div>
 
-            <div className="pt-6 border-t border-light-border dark:border-dark-border">
-              <Link
-                to="/login"
-                className="block text-lg font-semibold text-light-text dark:text-dark-text hover:text-light-pink dark:hover:text-dark-pink transition-colors mb-6"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Login
-              </Link>
-              <Link
-                to="/signup"
-                className="block w-full text-center pixel-borders pixel-borders-primary px-6 py-2 text-lg font-semibold mb-6"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Sign Up
-              </Link>
-            </div>
+            {/* Auth Mobile */}
+            {currentUser ? (
+              <div className="border-t border-gray-200 dark:border-gray-800 pt-4">
+                <div className="flex items-center mb-3">
+                  <div className="w-8 h-8 bg-light-primary dark:bg-dark-primary rounded-full flex items-center justify-center text-white">
+                    {currentUser.displayName
+                      ? currentUser.displayName.charAt(0).toUpperCase()
+                      : "U"}
+                  </div>
+                  <span className="ml-2 font-medium text-light-text dark:text-dark-text">
+                    {currentUser.displayName || currentUser.email}
+                  </span>
+                </div>
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setIsMenuOpen(false);
+                  }}
+                  className="text-red-500 font-medium"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="border-t border-gray-200 dark:border-gray-800 pt-4 flex flex-col space-y-3">
+                <Link
+                  to="/login"
+                  className="text-lg font-medium text-light-text dark:text-dark-text"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/signup"
+                  className="pixel-borders pixel-borders-primary px-6 py-2 inline-block text-center"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Sign Up
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

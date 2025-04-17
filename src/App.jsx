@@ -9,6 +9,10 @@ import cloudsImg from "./assets/gifs/clouds.png";
 import cloudsTopImg from "./assets/gifs/clouds_top.png";
 import axelGif from "./assets/gifs/axel.gif";
 import ProductDetails from "./components/ProductDetails";
+import PixelEditor from "./components/PixelEditor";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import { AuthProvider } from "./context/AuthContext";
 
 // Import weapon images
 import DiamondSword from "./assets/gifs/Weapons/Diamond Sword.gif";
@@ -1818,75 +1822,56 @@ const Home = () => {
                 </button>
               </div>
               <div className="space-y-4">
-                {[
-                  {
-                    id: 1,
-                    name: "Legendary Dragon",
-                    artist: "Artist #12",
-                    value: "45.5",
-                    image: "/path/to/art1.png",
-                  },
-                  {
-                    id: 2,
-                    name: "Mystic Sword",
-                    artist: "Artist #8",
-                    value: "38.2",
-                    image: "/path/to/art2.png",
-                  },
-                  {
-                    id: 3,
-                    name: "Cyber Punk",
-                    artist: "Artist #15",
-                    value: "32.4",
-                    image: "/path/to/art3.png",
-                  },
-                  {
-                    id: 4,
-                    name: "Golden Armor",
-                    artist: "Artist #5",
-                    value: "28.8",
-                    image: "/path/to/art4.png",
-                  },
-                  {
-                    id: 5,
-                    name: "Crystal Staff",
-                    artist: "Artist #20",
-                    value: "25.3",
-                    image: "/path/to/art5.png",
-                  },
-                ].map((art, index) => (
-                  <div
-                    key={art.id}
-                    className="flex items-center justify-between p-4 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer"
-                  >
-                    <div className="flex items-center gap-4">
-                      <span
-                        className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
-                          index === 0
-                            ? "bg-yellow-500 text-black"
-                            : index === 1
-                            ? "bg-gray-300 text-black"
-                            : index === 2
-                            ? "bg-amber-600 text-black"
-                            : "bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300"
-                        }`}
-                      >
-                        {index + 1}
-                      </span>
-                      <div>
-                        <p className="font-bold text-light-text dark:text-dark-text">
-                          {art.name}
+                {allCards
+                  .sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
+                  .slice(0, 5)
+                  .map((art, index) => (
+                    <div
+                      key={art.id}
+                      className="flex items-center justify-between p-4 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer"
+                    >
+                      <div className="flex items-center gap-4">
+                        <span
+                          className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
+                            index === 0
+                              ? "bg-yellow-500 text-black"
+                              : index === 1
+                              ? "bg-gray-300 text-black"
+                              : index === 2
+                              ? "bg-amber-600 text-black"
+                              : "bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300"
+                          }`}
+                        >
+                          {index + 1}
+                        </span>
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 rounded-lg overflow-hidden ring-2 ring-white dark:ring-gray-800">
+                            <img
+                              src={art.image}
+                              alt={art.name}
+                              className="w-full h-full object-cover image-pixelated"
+                            />
+                          </div>
+                          <div>
+                            <p className="font-bold text-light-text dark:text-dark-text">
+                              {art.name}
+                            </p>
+                            <p className="text-sm text-light-muted dark:text-dark-muted">
+                              by Artist #{art.id}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-bold text-light-primary dark:text-dark-primary">
+                          {art.price} ETH
                         </p>
-                        <p className="text-sm text-light-muted dark:text-dark-muted">
-                          by {art.artist}
+                        <p className="text-xs text-light-muted dark:text-dark-muted">
+                          {art.rarity}
                         </p>
                       </div>
                     </div>
-                    <p className="font-bold text-light-primary dark:text-dark-primary">
-                      {art.value} ETH
-                    </p>
-                  </div>
-                ))}
+                  ))}
               </div>
             </div>
           </div>
@@ -2224,52 +2209,32 @@ const PixaPunk = () => {
 };
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-
   return (
     <Router>
-      <div className={darkMode ? "dark" : ""}>
-        <div className="min-h-screen bg-light-bg dark:bg-[#0c0c0c] overflow-x-hidden">
-          <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <AuthProvider>
+        <div className="bg-light-bg dark:bg-dark-bg min-h-screen">
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route
-              path="/gallery"
-              element={
-                <>
-                  <Gallery />
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/create"
-              element={
-                <>
-                  <Create />
-                  <Footer />
-                </>
-              }
-            />
+            <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/pixa-character" element={<PixaCharacter />} />
             <Route path="/pixa-weapon" element={<PixaWeapon />} />
             <Route path="/pixa-punk" element={<PixaPunk />} />
             <Route
-              path="/product/:id"
-              element={
-                <>
-                  <ProductDetails allCards={allCards} />
-                  <Footer />
-                </>
-              }
-            />
-            <Route
               path="/pixabuilder"
               element={
                 <>
                   <div className="container mx-auto px-4 pt-32 pb-16">
-                    <h1>PixaBuilder</h1>
+                    <h1 className="text-5xl md:text-7xl font-bold mb-12 text-light-text dark:text-dark-text pl-6">
+                      PixaBuilder
+                    </h1>
+                    <p className="text-xl text-light-text dark:text-dark-text mb-12 pl-6">
+                      Create your own pixel art using our powerful editor.
+                      Design characters, weapons, and other collectibles to add
+                      to your NFT collection.
+                    </p>
+                    <PixelEditor />
                   </div>
                   <Footer />
                 </>
@@ -2279,8 +2244,10 @@ function App() {
               path="/login"
               element={
                 <>
-                  <div className="container mx-auto px-4 pt-32 pb-16">
-                    <h1>Login</h1>
+                  <div className="container mx-auto px-4 pt-32 pb-16 min-h-screen flex items-center justify-center">
+                    <div className="w-full max-w-md">
+                      <Login />
+                    </div>
                   </div>
                   <Footer />
                 </>
@@ -2290,8 +2257,10 @@ function App() {
               path="/signup"
               element={
                 <>
-                  <div className="container mx-auto px-4 pt-32 pb-16">
-                    <h1>Sign Up</h1>
+                  <div className="container mx-auto px-4 pt-32 pb-16 min-h-screen flex items-center justify-center">
+                    <div className="w-full max-w-md">
+                      <Signup />
+                    </div>
                   </div>
                   <Footer />
                 </>
@@ -2299,7 +2268,7 @@ function App() {
             />
           </Routes>
         </div>
-      </div>
+      </AuthProvider>
     </Router>
   );
 }
