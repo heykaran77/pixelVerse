@@ -151,7 +151,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-16">
       {/* Profile Header */}
       <div className="bg-gray-800 pixel-borders p-8 rounded-lg mb-8">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
@@ -164,12 +164,12 @@ const Profile = () => {
 
           {/* User Info */}
           <div className="flex-1">
-            <h1 className="text-3xl md:text-4xl font-bold text-light-text dark:text-dark-text text-center md:text-left">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#f7ff00] dark:text-dark-text text-center md:text-left">
               {currentUser?.displayName ||
                 currentUser?.email?.split("@")[0] ||
                 "User"}
             </h1>
-            <p className="text-light-muted dark:text-dark-muted mb-4 text-center md:text-left">
+            <p className="text-[#f7ff00] dark:text-dark-muted mb-4 text-center md:text-left">
               {currentUser?.email}
             </p>
 
@@ -179,7 +179,7 @@ const Profile = () => {
                 <p className="text-light-primary dark:text-dark-primary font-bold text-xl">
                   {userStats.joined}
                 </p>
-                <p className="text-light-muted dark:text-dark-muted text-sm">
+                <p className="text-[#f7ff00] dark:text-dark-muted text-sm">
                   Joined
                 </p>
               </div>
@@ -187,7 +187,7 @@ const Profile = () => {
                 <p className="text-light-primary dark:text-dark-primary font-bold text-xl">
                   {userStats.totalValue}
                 </p>
-                <p className="text-light-muted dark:text-dark-muted text-sm">
+                <p className="text-[#f7ff00] dark:text-dark-muted text-sm">
                   Collection Value
                 </p>
               </div>
@@ -195,7 +195,7 @@ const Profile = () => {
                 <p className="text-light-primary dark:text-dark-primary font-bold text-xl">
                   {userStats.items}
                 </p>
-                <p className="text-light-muted dark:text-dark-muted text-sm">
+                <p className="text-[#f7ff00] dark:text-dark-muted text-sm">
                   Items
                 </p>
               </div>
@@ -203,7 +203,7 @@ const Profile = () => {
                 <p className="text-light-primary dark:text-dark-primary font-bold text-xl">
                   #{userStats.rank}
                 </p>
-                <p className="text-light-muted dark:text-dark-muted text-sm">
+                <p className="text-[#f7ff00] dark:text-dark-muted text-sm">
                   Collector Rank
                 </p>
               </div>
@@ -217,23 +217,23 @@ const Profile = () => {
         <div className="flex flex-col gap-6 md:flex-row">
           {/* Left Side: Bio */}
           <div className="flex-1">
-            <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text">
+            <h2 className="text-xl font-bold mb-4 text-[#f7ff00] dark:text-dark-text">
               User Bio
             </h2>
-            <p className="text-light-muted dark:text-dark-muted mb-4">
+            <p className="text-[#f7ff00] dark:text-dark-muted mb-4">
               Pixel art enthusiast and NFT collector. Always on the lookout for
               unique digital assets and building my collection of rare PixaVerse
               items. Joined the crypto art scene in early 2023 and currently
               focusing on PixaWeapons and PixaCharacters.
             </p>
             <div className="flex gap-2">
-              <span className="px-3 py-1 text-sm bg-gray-700 rounded-full text-light-text dark:text-dark-text">
+              <span className="px-3 py-1 text-sm bg-gray-700 rounded-full text-white dark:text-dark-text">
                 PixaWeapon Collector
               </span>
-              <span className="px-3 py-1 text-sm bg-gray-700 rounded-full text-light-text dark:text-dark-text">
+              <span className="px-3 py-1 text-sm bg-gray-700 rounded-full text-white dark:text-dark-text">
                 Pixel Artist
               </span>
-              <span className="px-3 py-1 text-sm bg-gray-700 rounded-full text-light-text dark:text-dark-text">
+              <span className="px-3 py-1 text-sm bg-gray-700 rounded-full text-white dark:text-dark-text">
                 ETH Trader
               </span>
             </div>
@@ -241,13 +241,13 @@ const Profile = () => {
 
           {/* Right Side: Creation Tools */}
           <div className="md:w-1/3 bg-gray-700 p-4 rounded-lg">
-            <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text">
+            <h2 className="text-xl font-bold mb-4 text-[#f7ff00] dark:text-dark-text">
               Creation Tools
             </h2>
             <div className="space-y-3">
               <Link
                 to="/pixabuilder"
-                className="flex items-center gap-3 p-3 bg-gray-600 hover:bg-gray-500 transition-colors rounded-lg text-light-text dark:text-dark-text"
+                className="flex items-center gap-3 p-3 bg-gray-600 hover:bg-gray-500 transition-colors rounded-lg text-white dark:text-dark-text"
               >
                 <svg
                   className="w-5 h-5"
@@ -264,7 +264,7 @@ const Profile = () => {
                 </svg>
                 <span>Open PixaBuilder</span>
               </Link>
-              <button className="w-full flex items-center gap-3 p-3 bg-gray-600 hover:bg-gray-500 transition-colors rounded-lg text-light-text dark:text-dark-text">
+              <button className="w-full flex items-center gap-3 p-3 bg-gray-600 hover:bg-gray-500 transition-colors rounded-lg text-white dark:text-dark-text">
                 <svg
                   className="w-5 h-5"
                   fill="none"
@@ -280,7 +280,7 @@ const Profile = () => {
                 </svg>
                 <span>Mint New NFT</span>
               </button>
-              <button className="w-full flex items-center gap-3 p-3 bg-gray-600 hover:bg-gray-500 transition-colors rounded-lg text-light-text dark:text-dark-text">
+              <button className="w-full flex items-center gap-3 p-3 bg-gray-600 hover:bg-gray-500 transition-colors rounded-lg text-white dark:text-dark-text">
                 <svg
                   className="w-5 h-5"
                   fill="none"
@@ -307,7 +307,7 @@ const Profile = () => {
           className={`px-6 py-3 font-medium text-lg ${
             activeTab === "collection"
               ? "text-light-primary dark:text-dark-primary border-b-2 border-light-primary dark:border-dark-primary"
-              : "text-light-muted dark:text-dark-muted"
+              : "text-[#0c0c0c] dark:text-dark-muted"
           }`}
           onClick={() => setActiveTab("collection")}
         >
@@ -317,7 +317,7 @@ const Profile = () => {
           className={`px-6 py-3 font-medium text-lg ${
             activeTab === "activity"
               ? "text-light-primary dark:text-dark-primary border-b-2 border-light-primary dark:border-dark-primary"
-              : "text-light-muted dark:text-dark-muted"
+              : "text-[#0c0c0c] dark:text-dark-muted"
           }`}
           onClick={() => setActiveTab("activity")}
         >
@@ -327,7 +327,7 @@ const Profile = () => {
           className={`px-6 py-3 font-medium text-lg ${
             activeTab === "settings"
               ? "text-light-primary dark:text-dark-primary border-b-2 border-light-primary dark:border-dark-primary"
-              : "text-light-muted dark:text-dark-muted"
+              : "text-[#0c0c0c] dark:text-dark-muted"
           }`}
           onClick={() => setActiveTab("settings")}
         >
@@ -367,14 +367,14 @@ const Profile = () => {
               </select>
             </div>
 
-            <p className="text-light-text dark:text-dark-text">
+            <p className="text-white dark:text-dark-text">
               Showing {getDisplayedNFTs().length} of {ownedNFTs.length} items
             </p>
           </div>
 
           {/* Section: Featured Artwork */}
           <div className="mb-10">
-            <h2 className="text-2xl font-bold text-light-text dark:text-dark-text mb-6">
+            <h2 className="text-2xl font-bold text-[#f7ff00] dark:text-dark-text mb-6">
               Featured Artwork
             </h2>
             {getDisplayedNFTs().length > 0 && (
@@ -389,7 +389,7 @@ const Profile = () => {
                   </div>
                   <div className="md:w-1/2 p-6 flex flex-col">
                     <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-2xl font-bold text-light-text dark:text-dark-text">
+                      <h3 className="text-2xl font-bold text-[#f7ff00] dark:text-dark-text">
                         {getDisplayedNFTs()[0].name}
                       </h3>
                       <span
@@ -400,7 +400,7 @@ const Profile = () => {
                         {getDisplayedNFTs()[0].rarity}
                       </span>
                     </div>
-                    <p className="text-light-muted dark:text-dark-muted mb-6">
+                    <p className="text-[#f7ff00] dark:text-dark-muted mb-6">
                       This {getDisplayedNFTs()[0].collection} item is part of
                       your prized collection. Each pixel was meticulously
                       crafted to create this unique digital asset, representing
@@ -408,7 +408,7 @@ const Profile = () => {
                       PixelVerse ecosystem.
                     </p>
                     <div className="mb-8">
-                      <h4 className="text-sm text-light-muted dark:text-dark-muted mb-2">
+                      <h4 className="text-sm text-[#f7ff00] dark:text-dark-muted mb-2">
                         Collection
                       </h4>
                       <p className="text-light-text dark:text-dark-text font-medium">
@@ -416,7 +416,7 @@ const Profile = () => {
                       </p>
                     </div>
                     <div className="mt-auto">
-                      <h4 className="text-sm text-light-muted dark:text-dark-muted mb-2">
+                      <h4 className="text-sm text-[#f7ff00] dark:text-dark-muted mb-2">
                         Current Value
                       </h4>
                       <p className="text-light-primary dark:text-dark-primary text-2xl font-bold">
@@ -439,7 +439,7 @@ const Profile = () => {
 
           {/* Section: Collection Grid */}
           <div>
-            <h2 className="text-2xl font-bold text-light-text dark:text-dark-text mb-6">
+            <h2 className="text-2xl font-bold text-[#f7ff00] dark:text-dark-text mb-6">
               All Collectibles
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -467,11 +467,11 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="p-4">
-                    <h3 className="text-lg font-bold text-light-text dark:text-dark-text mb-1">
+                    <h3 className="text-lg font-bold text-[#f7ff00] dark:text-dark-text mb-1">
                       {nft.name}
                     </h3>
                     <div className="flex justify-between items-center">
-                      <p className="text-light-muted dark:text-dark-muted text-sm">
+                      <p className="text-[#f7ff00] dark:text-dark-muted text-sm">
                         {nft.collection}
                       </p>
                       <p className="text-light-primary dark:text-dark-primary font-bold">
@@ -495,7 +495,7 @@ const Profile = () => {
           {/* Empty State */}
           {getDisplayedNFTs().length === 0 && (
             <div className="text-center py-12">
-              <p className="text-xl text-light-muted dark:text-dark-muted mb-4">
+              <p className="text-xl text-white dark:text-dark-muted mb-4">
                 No items found matching your filters
               </p>
               <button
@@ -515,7 +515,7 @@ const Profile = () => {
       {/* Activity Tab Content */}
       {activeTab === "activity" && (
         <div className="bg-gray-800 pixel-borders p-6 rounded-lg">
-          <h2 className="text-2xl font-bold text-light-text dark:text-dark-text mb-6">
+          <h2 className="text-2xl font-bold text-[#f7ff00] dark:text-dark-text mb-6">
             Recent Activity
           </h2>
 
@@ -541,7 +541,7 @@ const Profile = () => {
                   You purchased{" "}
                   <span className="text-light-primary">Diamond Sword</span>
                 </p>
-                <p className="text-light-muted dark:text-dark-muted text-sm">
+                <p className="text-white dark:text-dark-muted text-sm">
                   2 days ago · 2.5 ETH
                 </p>
               </div>
@@ -569,7 +569,7 @@ const Profile = () => {
                   <span className="text-light-primary">Angel Axe</span> was
                   accepted
                 </p>
-                <p className="text-light-muted dark:text-dark-muted text-sm">
+                <p className="text-white dark:text-dark-muted text-sm">
                   1 week ago · 1.8 ETH
                 </p>
               </div>
@@ -596,7 +596,7 @@ const Profile = () => {
                   You placed a bid for{" "}
                   <span className="text-light-primary">Nebula Sword</span>
                 </p>
-                <p className="text-light-muted dark:text-dark-muted text-sm">
+                <p className="text-white dark:text-dark-muted text-sm">
                   2 weeks ago · 2.0 ETH
                 </p>
               </div>
@@ -608,7 +608,7 @@ const Profile = () => {
       {/* Settings Tab Content */}
       {activeTab === "settings" && (
         <div className="bg-gray-800 pixel-borders p-6 rounded-lg">
-          <h2 className="text-2xl font-bold text-light-text dark:text-dark-text mb-6">
+          <h2 className="text-2xl font-bold text-[#f7ff00] dark:text-dark-text mb-6">
             Account Settings
           </h2>
 
@@ -616,17 +616,17 @@ const Profile = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Personal Information */}
               <div className="space-y-6">
-                <h3 className="text-xl font-semibold text-light-text dark:text-dark-text border-b border-gray-700 pb-2">
+                <h3 className="text-xl font-semibold text-[#f7ff00] dark:text-dark-text border-b border-gray-700 pb-2">
                   Personal Information
                 </h3>
 
                 <div>
-                  <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
+                  <label className="block text-[#f7ff00] dark:text-dark-text mb-2 font-medium">
                     Display Name
                   </label>
                   <input
                     type="text"
-                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary"
+                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f7ff00]"
                     defaultValue={
                       currentUser?.displayName ||
                       currentUser?.email?.split("@")[0] ||
@@ -637,27 +637,27 @@ const Profile = () => {
                 </div>
 
                 <div>
-                  <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
+                  <label className="block text-[#f7ff00] dark:text-dark-text mb-2 font-medium">
                     Email
                   </label>
                   <input
                     type="email"
-                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary cursor-not-allowed opacity-75"
+                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f7ff00] cursor-not-allowed opacity-75"
                     defaultValue={currentUser?.email || ""}
                     placeholder="Enter your email"
                     disabled
                   />
-                  <p className="text-light-muted dark:text-dark-muted text-sm mt-1">
+                  <p className="text-white dark:text-dark-muted text-sm mt-1">
                     Email cannot be changed
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
+                  <label className="block text-[#f7ff00] dark:text-dark-text mb-2 font-medium">
                     Bio
                   </label>
                   <textarea
-                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary min-h-[100px]"
+                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f7ff00] min-h-[100px]"
                     placeholder="Tell us about yourself"
                     defaultValue="Pixel art enthusiast and NFT collector. Always on the lookout for unique digital assets!"
                   />
@@ -666,24 +666,24 @@ const Profile = () => {
 
               {/* Preferences */}
               <div className="space-y-6">
-                <h3 className="text-xl font-semibold text-light-text dark:text-dark-text border-b border-gray-700 pb-2">
+                <h3 className="text-xl font-semibold text-[#f7ff00] dark:text-dark-text border-b border-gray-700 pb-2">
                   Preferences & Wallet
                 </h3>
 
                 <div>
-                  <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
+                  <label className="block text-[#f7ff00] dark:text-dark-text mb-2 font-medium">
                     Ethereum Wallet Address
                   </label>
                   <input
                     type="text"
-                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary"
+                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f7ff00]"
                     defaultValue="0x4A8b...F3eE"
                     placeholder="Your ETH wallet address"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
+                  <label className="block text-[#f7ff00] dark:text-dark-text mb-2 font-medium">
                     Notification Settings
                   </label>
                   <div className="space-y-2">
@@ -696,7 +696,7 @@ const Profile = () => {
                       />
                       <label
                         htmlFor="sales-notifications"
-                        className="ml-2 text-light-text dark:text-dark-text"
+                        className="ml-2 text-[#f7ff00] dark:text-dark-text"
                       >
                         Item sold notifications
                       </label>
@@ -710,7 +710,7 @@ const Profile = () => {
                       />
                       <label
                         htmlFor="bid-notifications"
-                        className="ml-2 text-light-text dark:text-dark-text"
+                        className="ml-2 text-[#f7ff00] dark:text-dark-text"
                       >
                         Bid activity
                       </label>
@@ -724,7 +724,7 @@ const Profile = () => {
                       />
                       <label
                         htmlFor="price-notifications"
-                        className="ml-2 text-light-text dark:text-dark-text"
+                        className="ml-2 text-[#f7ff00] dark:text-dark-text"
                       >
                         Price change alerts
                       </label>
@@ -737,7 +737,7 @@ const Profile = () => {
                       />
                       <label
                         htmlFor="newsletter"
-                        className="ml-2 text-light-text dark:text-dark-text"
+                        className="ml-2 text-[#f7ff00] dark:text-dark-text"
                       >
                         Newsletter
                       </label>
@@ -746,11 +746,11 @@ const Profile = () => {
                 </div>
 
                 <div>
-                  <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
+                  <label className="block text-[#f7ff00] dark:text-dark-text mb-2 font-medium">
                     Display Theme
                   </label>
                   <select
-                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary cursor-pointer"
+                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f7ff00] cursor-pointer"
                     defaultValue="system"
                   >
                     <option value="light">Light Mode</option>
@@ -770,7 +770,7 @@ const Profile = () => {
               </button>
               <button
                 type="button"
-                className="pixel-borders pixel-borders-primary h-10 px-6 font-bold text-white transition-colors"
+                className="pixel-borders pixel-borders-[#f7ff00] h-10 px-6 font-bold text-white transition-colors"
               >
                 Save Changes
               </button>

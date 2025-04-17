@@ -75,9 +75,12 @@ const PixelEditor = () => {
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
 
-    // Calculate relative position in canvas
-    const relX = x - rect.left;
-    const relY = y - rect.top;
+    // Calculate relative position in canvas with proper scaling
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    const relX = (x - rect.left) * scaleX;
+    const relY = (y - rect.top) * scaleY;
 
     // Calculate grid coordinates
     const cellSize = canvas.width / gridSize;
@@ -93,19 +96,31 @@ const PixelEditor = () => {
   };
 
   const handleCanvasMouseDown = (e) => {
+    e.preventDefault();
     setIsDrawing(true);
-    const index = getPixelIndex(e.clientX, e.clientY);
-    if (index >= 0) {
-      handleDraw(index);
+    const x = e.clientX || (e.touches && e.touches[0].clientX);
+    const y = e.clientY || (e.touches && e.touches[0].clientY);
+
+    if (x && y) {
+      const index = getPixelIndex(x, y);
+      if (index >= 0) {
+        handleDraw(index);
+      }
     }
   };
 
   const handleCanvasMouseMove = (e) => {
     if (!isDrawing) return;
+    e.preventDefault();
 
-    const index = getPixelIndex(e.clientX, e.clientY);
-    if (index >= 0) {
-      handleDraw(index);
+    const x = e.clientX || (e.touches && e.touches[0].clientX);
+    const y = e.clientY || (e.touches && e.touches[0].clientY);
+
+    if (x && y) {
+      const index = getPixelIndex(x, y);
+      if (index >= 0) {
+        handleDraw(index);
+      }
     }
   };
 
@@ -305,6 +320,10 @@ const PixelEditor = () => {
               onMouseMove={handleCanvasMouseMove}
               onMouseUp={handleCanvasMouseUp}
               onMouseLeave={handleCanvasMouseLeave}
+              onTouchStart={handleCanvasMouseDown}
+              onTouchMove={handleCanvasMouseMove}
+              onTouchEnd={handleCanvasMouseUp}
+              onTouchCancel={handleCanvasMouseLeave}
             />
             <canvas
               ref={gridCanvasRef}

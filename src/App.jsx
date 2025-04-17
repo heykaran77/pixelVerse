@@ -5,8 +5,6 @@ import oceanBg from "./assets/gifs/ocean.png";
 import mapLandingGif from "./assets/gifs/map_landing 01.gif";
 import mapLanding03Gif from "./assets/gifs/map_landing 03.gif";
 import mapLanding05Gif from "./assets/gifs/map_landing 05.gif";
-import cloudsImg from "./assets/gifs/clouds.png";
-import cloudsTopImg from "./assets/gifs/clouds_top.png";
 import axelGif from "./assets/gifs/axel.gif";
 import ProductDetails from "./components/ProductDetails";
 import PixelEditor from "./components/PixelEditor";
@@ -14,6 +12,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import { AuthProvider } from "./context/AuthContext";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Import weapon images
 import DiamondSword from "./assets/gifs/Weapons/Diamond Sword.gif";
@@ -1104,38 +1103,29 @@ const Home = () => {
             </div>
           </div>
         </div>
-
-        {/* Bottom Cloud Frame */}
-        <div
-          className="absolute bottom-0 left-0 w-full pointer-events-none"
-          style={{ zIndex: 10 }}
-        >
-          <img
-            src={cloudsTopImg}
-            alt="Bottom Cloud Frame"
-            className="w-full"
-            style={{
-              imageRendering: "pixelated",
-            }}
-          />
-        </div>
       </header>
 
       {/* Guide Section - Full Width */}
       <section className="relative w-full h-[100vh] overflow-hidden">
-        {/* Ocean Background - Desktop Only */}
+        {/* Ocean Background - For all devices, consistent with the hero section */}
         <div
-          className="absolute inset-0 w-full h-full hidden lg:block"
+          className="absolute inset-0 w-full h-full"
           style={{
             backgroundImage: `url(${oceanBg})`,
             backgroundRepeat: "repeat",
-            backgroundSize: "256px 256px",
+            backgroundSize: "128px 128px",
+            imageRendering: "pixelated",
+            imageRendering: "-moz-crisp-edges",
+            imageRendering: "crisp-edges",
             opacity: 1,
           }}
         />
 
-        {/* Mobile Background */}
-        <div className="absolute inset-0 w-full h-full lg:hidden">
+        {/* Mobile Background - Behind the ocean background with reduced opacity */}
+        <div
+          className="absolute inset-0 w-full h-full lg:hidden"
+          style={{ zIndex: 2, opacity: 0.7 }}
+        >
           <img
             src={mapLanding05Gif}
             alt="Mobile Background"
@@ -1147,19 +1137,31 @@ const Home = () => {
         </div>
 
         {/* Left Side Map GIF - Desktop Only */}
-        <div className="hidden lg:block absolute left-0 h-full z-20">
+        <div
+          className="hidden lg:block absolute left-0 h-full"
+          style={{
+            zIndex: 1,
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
           <img
             src={mapLanding03Gif}
             alt="Map Animation"
-            className="h-full w-auto"
+            className="h-[85%] w-auto"
             style={{
               imageRendering: "pixelated",
+              transform: "scale(0.85)",
+              transformOrigin: "left center",
             }}
           />
         </div>
 
         {/* Map Timeline Container */}
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div
+          className="relative w-full h-full flex items-center justify-center"
+          style={{ zIndex: 5 }}
+        >
           {/* Desktop Map Timeline */}
           <div className="hidden lg:block w-full h-full">
             <div className="relative w-full h-full max-w-[1000px] mx-auto flex items-center">
@@ -1318,6 +1320,12 @@ const Home = () => {
           </div>
         </div>
 
+        {/* Fade transition to next section */}
+        <div
+          className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#f8f4e8] dark:from-[#0c0c0c] to-transparent pointer-events-none"
+          style={{ zIndex: 45 }}
+        ></div>
+
         {/* Cloud Overlay - Between section and navbar */}
         <div
           className="absolute inset-0 w-full h-full pointer-events-none"
@@ -1326,56 +1334,28 @@ const Home = () => {
           {/* Mobile cloud */}
           <div className="lg:hidden absolute inset-0 flex items-center justify-center overflow-hidden">
             <div className="relative h-full flex items-center">
-              <img
-                src={cloudsImg}
-                alt="Cloud Frame Mobile"
-                style={{
-                  height: "100%",
-                  width: "auto",
-                  maxWidth: "none",
-                  imageRendering: "pixelated",
-                  objectFit: "contain",
-                }}
-              />
+              {/* Removed blur effect and made more transparent */}
+              <div className="h-full w-full bg-gradient-to-t from-white/5 to-transparent opacity-30"></div>
             </div>
           </div>
 
-          {/* Desktop cloud */}
+          {/* Desktop cloud - Removed blur effect that was causing the section to appear blurred */}
           <div className="hidden lg:block w-full h-full">
-            <img
-              src={cloudsImg}
-              alt="Cloud Frame Desktop"
-              className="absolute top-0 left-0 w-full h-full"
-              style={{
-                objectFit: "fill",
-                imageRendering: "pixelated",
-              }}
-            />
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-white/5 to-transparent opacity-30"></div>
           </div>
         </div>
       </section>
 
       {/* Products Section */}
-      <section className="relative py-24 bg-[#f5e6d3] dark:bg-[#0c0c0c]">
-        {/* Top Cloud Frame */}
-        <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none"
-          style={{ zIndex: 10 }}
-        >
-          <img
-            src={cloudsTopImg}
-            alt="Cloud Frame"
-            className="w-full"
-            style={{
-              imageRendering: "pixelated",
-              transform: "rotate(180deg)",
-            }}
-          />
-        </div>
+      <section
+        className="relative py-12 bg-[#f8f4e8] dark:bg-[#0c0c0c]"
+        style={{ marginTop: "-1px" }}
+      >
+        {/* Removed Top Cloud Frame since we now have the fade transition */}
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16 pt-20">
-            <h2 className="text-5xl md:text-7xl font-bold mb-4 text-white">
+            <h2 className="text-5xl md:text-7xl font-bold mb-4 text-[#0c0c0c] dark:text-white">
               The Pixa Collxn
             </h2>
           </div>
@@ -1387,15 +1367,15 @@ const Home = () => {
               to="/pixa-character"
               className="featured-card group cursor-pointer"
             >
-              <div className="relative aspect-square mb-4 overflow-hidden rounded-lg">
+              <div className="relative aspect-square mb-4 overflow-hidden rounded-lg bg-[#0c0c0c] dark:bg-white">
                 <img
                   src={Garth}
                   alt="Character Collection"
                   className="w-full h-full object-cover image-pixelated transform group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 dark:from-black/40 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="text-2xl font-bold text-white dark:text-[#0c0c0c] mb-2">
                     PixaCharacters
                   </h3>
                 </div>
@@ -1407,15 +1387,15 @@ const Home = () => {
               to="/pixa-weapon"
               className="featured-card group cursor-pointer"
             >
-              <div className="relative aspect-square mb-4 overflow-hidden rounded-lg">
+              <div className="relative aspect-square mb-4 overflow-hidden rounded-lg bg-[#0c0c0c] dark:bg-white">
                 <img
                   src={axelGif}
                   alt="Weapons Collection"
                   className="w-full h-full object-cover image-pixelated transform group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 dark:from-black/40 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="text-2xl font-bold text-white dark:text-[#0c0c0c] mb-2">
                     PixaWeapons
                   </h3>
                 </div>
@@ -1427,15 +1407,15 @@ const Home = () => {
               to="/pixa-punk"
               className="featured-card group cursor-pointer"
             >
-              <div className="relative aspect-square mb-4 overflow-hidden rounded-lg">
+              <div className="relative aspect-square mb-4 overflow-hidden rounded-lg bg-[#0c0c0c] dark:bg-white">
                 <img
                   src={Char13}
                   alt="PixaPunk Collection"
                   className="w-full h-full object-cover image-pixelated transform group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 dark:from-black/40 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="text-2xl font-bold text-white dark:text-[#0c0c0c] mb-2">
                     PixaPunk
                   </h3>
                 </div>
@@ -1480,28 +1460,15 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Bottom Cloud Frame */}
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none"
-          style={{ zIndex: 10 }}
-        >
-          <img
-            src={cloudsTopImg}
-            alt="Bottom Cloud Frame"
-            className="w-full"
-            style={{
-              imageRendering: "pixelated",
-            }}
-          />
-        </div>
+        {/* Bottom Cloud Frame - Removed */}
       </section>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-48 relative">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative">
         {/* Cloud Top Frame - REMOVED */}
 
-        <section className="mb-16">
-          <h2 className="text-5xl lg:text-6xl font-bold mb-8 text-gray-900 dark:text-white">
+        <section className="mb-12">
+          <h2 className="text-5xl lg:text-6xl pb-8 font-bold mb-8 text-gray-900 dark:text-white">
             The PixaArt Gallery
           </h2>
 
@@ -1710,18 +1677,18 @@ const Home = () => {
       </main>
 
       {/* Leaderboards Section */}
-      <div className="relative">
+      <div className="w-full bg-[#f8f4e8] dark:bg-[#0c0c0c] py-4 px-4">
         {/* Top Cloud Frame - REMOVED */}
 
-        <div className="container mx-auto px-4 py-24 pt-48">
-          <h2 className="text-5xl md:text-7xl font-bold mb-12 text-light-text dark:text-dark-text pl-6">
+        <div className="container mx-auto px-4 pb-8">
+          <h2 className="text-5xl md:text-7xl font-bold mb-12 text-[#0c0c0c] dark:text-dark-text pl-6">
             Leaderboards
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Top Collectors Leaderboard */}
-            <div className="pixel-borders p-6">
+            <div className="pixel-borders p-6 bg-white dark:bg-gray-800 shadow-md">
               <div className="flex justify-between items-center mb-6">
-                <h3 className="text-2xl font-bold text-light-text dark:text-dark-text">
+                <h3 className="text-2xl font-bold text-[#0c0c0c] dark:text-dark-text">
                   Top Collectors
                 </h3>
                 <button className="text-light-primary dark:text-dark-primary hover:opacity-80 transition-opacity text-sm font-medium">
@@ -1738,7 +1705,7 @@ const Home = () => {
                 ].map((collector, index) => (
                   <div
                     key={collector.id}
-                    className="flex items-center justify-between p-4 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer"
+                    className="flex items-center justify-between p-4 bg-[#f8f4e8] dark:bg-gray-800 rounded-lg hover:bg-[#f0eadc] dark:hover:bg-gray-700 transition-colors cursor-pointer border border-[#e9e2cd] dark:border-gray-600"
                   >
                     <div className="flex items-center gap-4">
                       <span
@@ -1755,10 +1722,10 @@ const Home = () => {
                         {index + 1}
                       </span>
                       <div>
-                        <p className="font-bold text-light-text dark:text-dark-text">
+                        <p className="font-bold text-[#0c0c0c] dark:text-dark-text">
                           {collector.name}
                         </p>
-                        <p className="text-sm text-light-muted dark:text-dark-muted">
+                        <p className="text-sm text-gray-600 dark:text-dark-muted">
                           {collector.items} items
                         </p>
                       </div>
@@ -1772,9 +1739,9 @@ const Home = () => {
             </div>
 
             {/* Top Arts Leaderboard */}
-            <div className="pixel-borders p-6">
+            <div className="pixel-borders p-6 bg-white dark:bg-gray-800 shadow-md">
               <div className="flex justify-between items-center mb-6">
-                <h3 className="text-2xl font-bold text-light-text dark:text-dark-text">
+                <h3 className="text-2xl font-bold text-[#0c0c0c] dark:text-dark-text">
                   Top Arts
                 </h3>
                 <button className="text-light-primary dark:text-dark-primary hover:opacity-80 transition-opacity text-sm font-medium">
@@ -1788,7 +1755,7 @@ const Home = () => {
                   .map((art, index) => (
                     <div
                       key={art.id}
-                      className="flex items-center justify-between p-4 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer"
+                      className="flex items-center justify-between p-4 bg-[#f8f4e8] dark:bg-gray-800 rounded-lg hover:bg-[#f0eadc] dark:hover:bg-gray-700 transition-colors cursor-pointer border border-[#e9e2cd] dark:border-gray-600"
                     >
                       <div className="flex items-center gap-4">
                         <span
@@ -1805,7 +1772,7 @@ const Home = () => {
                           {index + 1}
                         </span>
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-lg overflow-hidden ring-2 ring-white dark:ring-gray-800">
+                          <div className="w-12 h-12 rounded-lg overflow-hidden ring-2 ring-[#e9e2cd] dark:ring-gray-800">
                             <img
                               src={art.image}
                               alt={art.name}
@@ -1813,10 +1780,10 @@ const Home = () => {
                             />
                           </div>
                           <div>
-                            <p className="font-bold text-light-text dark:text-dark-text">
+                            <p className="font-bold text-[#0c0c0c] dark:text-dark-text">
                               {art.name}
                             </p>
-                            <p className="text-sm text-light-muted dark:text-dark-muted">
+                            <p className="text-sm text-gray-600 dark:text-dark-muted">
                               by Artist #{art.id}
                             </p>
                           </div>
@@ -1826,7 +1793,7 @@ const Home = () => {
                         <p className="font-bold text-light-primary dark:text-dark-primary">
                           {art.price} ETH
                         </p>
-                        <p className="text-xs text-light-muted dark:text-dark-muted">
+                        <p className="text-xs text-gray-600 dark:text-dark-muted">
                           {art.rarity}
                         </p>
                       </div>
@@ -2159,6 +2126,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
+        <ScrollToTop />
         <div className="bg-light-bg dark:bg-dark-bg min-h-screen">
           <Navbar />
           <Routes>
