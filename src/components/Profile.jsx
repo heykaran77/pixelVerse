@@ -212,6 +212,95 @@ const Profile = () => {
         </div>
       </div>
 
+      {/* User Details Card */}
+      <div className="bg-gray-800 pixel-borders p-6 rounded-lg mb-8">
+        <div className="flex flex-col gap-6 md:flex-row">
+          {/* Left Side: Bio */}
+          <div className="flex-1">
+            <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text">
+              User Bio
+            </h2>
+            <p className="text-light-muted dark:text-dark-muted mb-4">
+              Pixel art enthusiast and NFT collector. Always on the lookout for
+              unique digital assets and building my collection of rare PixaVerse
+              items. Joined the crypto art scene in early 2023 and currently
+              focusing on PixaWeapons and PixaCharacters.
+            </p>
+            <div className="flex gap-2">
+              <span className="px-3 py-1 text-sm bg-gray-700 rounded-full text-light-text dark:text-dark-text">
+                PixaWeapon Collector
+              </span>
+              <span className="px-3 py-1 text-sm bg-gray-700 rounded-full text-light-text dark:text-dark-text">
+                Pixel Artist
+              </span>
+              <span className="px-3 py-1 text-sm bg-gray-700 rounded-full text-light-text dark:text-dark-text">
+                ETH Trader
+              </span>
+            </div>
+          </div>
+
+          {/* Right Side: Creation Tools */}
+          <div className="md:w-1/3 bg-gray-700 p-4 rounded-lg">
+            <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text">
+              Creation Tools
+            </h2>
+            <div className="space-y-3">
+              <Link
+                to="/pixabuilder"
+                className="flex items-center gap-3 p-3 bg-gray-600 hover:bg-gray-500 transition-colors rounded-lg text-light-text dark:text-dark-text"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                  ></path>
+                </svg>
+                <span>Open PixaBuilder</span>
+              </Link>
+              <button className="w-full flex items-center gap-3 p-3 bg-gray-600 hover:bg-gray-500 transition-colors rounded-lg text-light-text dark:text-dark-text">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                <span>Mint New NFT</span>
+              </button>
+              <button className="w-full flex items-center gap-3 p-3 bg-gray-600 hover:bg-gray-500 transition-colors rounded-lg text-light-text dark:text-dark-text">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                  ></path>
+                </svg>
+                <span>Share Gallery</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Tabs */}
       <div className="flex mb-6 border-b border-gray-700">
         <button
@@ -283,45 +372,124 @@ const Profile = () => {
             </p>
           </div>
 
-          {/* NFT Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {getDisplayedNFTs().map((nft) => (
-              <Link
-                to={`/product/${nft.id}`}
-                key={nft.id}
-                className="bg-gray-800 pixel-borders overflow-hidden rounded-lg transition-transform hover:scale-[1.02]"
-              >
-                <div className="p-4 bg-gray-700 aspect-square flex items-center justify-center">
-                  <img
-                    src={nft.image}
-                    alt={nft.name}
-                    className="max-h-full image-pixelated object-contain"
-                  />
+          {/* Section: Featured Artwork */}
+          <div className="mb-10">
+            <h2 className="text-2xl font-bold text-light-text dark:text-dark-text mb-6">
+              Featured Artwork
+            </h2>
+            {getDisplayedNFTs().length > 0 && (
+              <div className="bg-gray-800 pixel-borders rounded-lg overflow-hidden">
+                <div className="flex flex-col md:flex-row">
+                  <div className="md:w-1/2 aspect-square bg-black flex items-center justify-center p-4">
+                    <img
+                      src={getDisplayedNFTs()[0].image}
+                      alt={getDisplayedNFTs()[0].name}
+                      className="max-h-full max-w-full object-contain image-pixelated"
+                    />
+                  </div>
+                  <div className="md:w-1/2 p-6 flex flex-col">
+                    <div className="flex justify-between items-start mb-4">
+                      <h3 className="text-2xl font-bold text-light-text dark:text-dark-text">
+                        {getDisplayedNFTs()[0].name}
+                      </h3>
+                      <span
+                        className={`text-sm px-3 py-1 rounded-full ${getRarityClass(
+                          getDisplayedNFTs()[0].rarity
+                        )}`}
+                      >
+                        {getDisplayedNFTs()[0].rarity}
+                      </span>
+                    </div>
+                    <p className="text-light-muted dark:text-dark-muted mb-6">
+                      This {getDisplayedNFTs()[0].collection} item is part of
+                      your prized collection. Each pixel was meticulously
+                      crafted to create this unique digital asset, representing
+                      both artistic value and potential investment growth in the
+                      PixelVerse ecosystem.
+                    </p>
+                    <div className="mb-8">
+                      <h4 className="text-sm text-light-muted dark:text-dark-muted mb-2">
+                        Collection
+                      </h4>
+                      <p className="text-light-text dark:text-dark-text font-medium">
+                        {getDisplayedNFTs()[0].collection}
+                      </p>
+                    </div>
+                    <div className="mt-auto">
+                      <h4 className="text-sm text-light-muted dark:text-dark-muted mb-2">
+                        Current Value
+                      </h4>
+                      <p className="text-light-primary dark:text-dark-primary text-2xl font-bold">
+                        {getDisplayedNFTs()[0].price}
+                      </p>
+                      <div className="flex gap-3 mt-6">
+                        <button className="pixel-borders pixel-borders-primary h-10 px-4 font-bold text-white">
+                          List for Sale
+                        </button>
+                        <button className="pixel-borders h-10 px-4 text-light-text dark:text-dark-text bg-transparent border border-gray-600">
+                          Transfer
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-lg font-bold text-light-text dark:text-dark-text">
+              </div>
+            )}
+          </div>
+
+          {/* Section: Collection Grid */}
+          <div>
+            <h2 className="text-2xl font-bold text-light-text dark:text-dark-text mb-6">
+              All Collectibles
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {getDisplayedNFTs().map((nft) => (
+                <div
+                  key={nft.id}
+                  className="bg-gray-800 pixel-borders overflow-hidden rounded-lg transition-transform hover:scale-[1.02]"
+                >
+                  <div className="relative">
+                    <div className="p-3 bg-gray-900 aspect-square flex items-center justify-center">
+                      <img
+                        src={nft.image}
+                        alt={nft.name}
+                        className="max-h-full image-pixelated object-contain"
+                      />
+                    </div>
+                    <div className="absolute top-3 right-3">
+                      <span
+                        className={`text-xs px-2 py-0.5 rounded-full ${getRarityClass(
+                          nft.rarity
+                        )}`}
+                      >
+                        {nft.rarity}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-lg font-bold text-light-text dark:text-dark-text mb-1">
                       {nft.name}
                     </h3>
-                    <span
-                      className={`text-xs px-2 py-0.5 rounded-full ${getRarityClass(
-                        nft.rarity
-                      )}`}
-                    >
-                      {nft.rarity}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <p className="text-light-muted dark:text-dark-muted text-sm">
-                      {nft.collection}
-                    </p>
-                    <p className="text-light-primary dark:text-dark-primary font-bold">
-                      {nft.price}
-                    </p>
+                    <div className="flex justify-between items-center">
+                      <p className="text-light-muted dark:text-dark-muted text-sm">
+                        {nft.collection}
+                      </p>
+                      <p className="text-light-primary dark:text-dark-primary font-bold">
+                        {nft.price}
+                      </p>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 mt-4">
+                      <button className="text-xs py-1 text-center rounded bg-gray-700 hover:bg-gray-600 text-white transition-colors">
+                        View Details
+                      </button>
+                      <button className="text-xs py-1 text-center rounded bg-light-primary hover:bg-light-primary/80 text-white transition-colors">
+                        List for Sale
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </Link>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* Empty State */}
@@ -444,56 +612,169 @@ const Profile = () => {
             Account Settings
           </h2>
 
-          <form className="space-y-6">
-            <div>
-              <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
-                Display Name
-              </label>
-              <input
-                type="text"
-                className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary"
-                defaultValue={
-                  currentUser?.displayName ||
-                  currentUser?.email?.split("@")[0] ||
-                  ""
-                }
-                placeholder="Enter your display name"
-              />
+          <form className="space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Personal Information */}
+              <div className="space-y-6">
+                <h3 className="text-xl font-semibold text-light-text dark:text-dark-text border-b border-gray-700 pb-2">
+                  Personal Information
+                </h3>
+
+                <div>
+                  <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
+                    Display Name
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary"
+                    defaultValue={
+                      currentUser?.displayName ||
+                      currentUser?.email?.split("@")[0] ||
+                      ""
+                    }
+                    placeholder="Enter your display name"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary cursor-not-allowed opacity-75"
+                    defaultValue={currentUser?.email || ""}
+                    placeholder="Enter your email"
+                    disabled
+                  />
+                  <p className="text-light-muted dark:text-dark-muted text-sm mt-1">
+                    Email cannot be changed
+                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
+                    Bio
+                  </label>
+                  <textarea
+                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary min-h-[100px]"
+                    placeholder="Tell us about yourself"
+                    defaultValue="Pixel art enthusiast and NFT collector. Always on the lookout for unique digital assets!"
+                  />
+                </div>
+              </div>
+
+              {/* Preferences */}
+              <div className="space-y-6">
+                <h3 className="text-xl font-semibold text-light-text dark:text-dark-text border-b border-gray-700 pb-2">
+                  Preferences & Wallet
+                </h3>
+
+                <div>
+                  <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
+                    Ethereum Wallet Address
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary"
+                    defaultValue="0x4A8b...F3eE"
+                    placeholder="Your ETH wallet address"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
+                    Notification Settings
+                  </label>
+                  <div className="space-y-2">
+                    <div className="flex items-center">
+                      <input
+                        id="sales-notifications"
+                        type="checkbox"
+                        className="h-5 w-5 text-light-primary focus:ring-light-primary dark:focus:ring-dark-primary"
+                        defaultChecked
+                      />
+                      <label
+                        htmlFor="sales-notifications"
+                        className="ml-2 text-light-text dark:text-dark-text"
+                      >
+                        Item sold notifications
+                      </label>
+                    </div>
+                    <div className="flex items-center">
+                      <input
+                        id="bid-notifications"
+                        type="checkbox"
+                        className="h-5 w-5 text-light-primary focus:ring-light-primary"
+                        defaultChecked
+                      />
+                      <label
+                        htmlFor="bid-notifications"
+                        className="ml-2 text-light-text dark:text-dark-text"
+                      >
+                        Bid activity
+                      </label>
+                    </div>
+                    <div className="flex items-center">
+                      <input
+                        id="price-notifications"
+                        type="checkbox"
+                        className="h-5 w-5 text-light-primary focus:ring-light-primary"
+                        defaultChecked
+                      />
+                      <label
+                        htmlFor="price-notifications"
+                        className="ml-2 text-light-text dark:text-dark-text"
+                      >
+                        Price change alerts
+                      </label>
+                    </div>
+                    <div className="flex items-center">
+                      <input
+                        id="newsletter"
+                        type="checkbox"
+                        className="h-5 w-5 text-light-primary focus:ring-light-primary"
+                      />
+                      <label
+                        htmlFor="newsletter"
+                        className="ml-2 text-light-text dark:text-dark-text"
+                      >
+                        Newsletter
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
+                    Display Theme
+                  </label>
+                  <select
+                    className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary cursor-pointer"
+                    defaultValue="system"
+                  >
+                    <option value="light">Light Mode</option>
+                    <option value="dark">Dark Mode</option>
+                    <option value="system">System Preference</option>
+                  </select>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
-                Email
-              </label>
-              <input
-                type="email"
-                className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary"
-                defaultValue={currentUser?.email || ""}
-                placeholder="Enter your email"
-                disabled
-              />
-              <p className="text-light-muted dark:text-dark-muted text-sm mt-1">
-                Email cannot be changed
-              </p>
+            <div className="border-t border-gray-700 pt-6 flex gap-4 justify-end">
+              <button
+                type="button"
+                className="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                className="pixel-borders pixel-borders-primary h-10 px-6 font-bold text-white transition-colors"
+              >
+                Save Changes
+              </button>
             </div>
-
-            <div>
-              <label className="block text-light-text dark:text-dark-text mb-2 font-medium">
-                Bio
-              </label>
-              <textarea
-                className="w-full p-3 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-light-primary min-h-[100px]"
-                placeholder="Tell us about yourself"
-                defaultValue="Pixel art enthusiast and NFT collector. Always on the lookout for unique digital assets!"
-              />
-            </div>
-
-            <button
-              type="button"
-              className="w-full pixel-borders pixel-borders-primary h-12 font-bold text-white transition-colors"
-            >
-              Save Changes
-            </button>
           </form>
         </div>
       )}

@@ -294,23 +294,25 @@ const PixelEditor = () => {
           </div>
         </div>
 
-        <div className="lg:w-3/4 bg-white relative">
-          <canvas
-            ref={canvasRef}
-            width={512}
-            height={512}
-            className="absolute top-0 left-0 w-full h-full"
-            onMouseDown={handleCanvasMouseDown}
-            onMouseMove={handleCanvasMouseMove}
-            onMouseUp={handleCanvasMouseUp}
-            onMouseLeave={handleCanvasMouseLeave}
-          />
-          <canvas
-            ref={gridCanvasRef}
-            width={512}
-            height={512}
-            className="absolute top-0 left-0 w-full h-full pointer-events-none"
-          />
+        <div className="lg:w-3/4 flex justify-center items-center">
+          <div className="bg-white relative aspect-square w-full max-w-[600px]">
+            <canvas
+              ref={canvasRef}
+              width={512}
+              height={512}
+              className="absolute top-0 left-0 w-full h-full"
+              onMouseDown={handleCanvasMouseDown}
+              onMouseMove={handleCanvasMouseMove}
+              onMouseUp={handleCanvasMouseUp}
+              onMouseLeave={handleCanvasMouseLeave}
+            />
+            <canvas
+              ref={gridCanvasRef}
+              width={512}
+              height={512}
+              className="absolute top-0 left-0 w-full h-full pointer-events-none"
+            />
+          </div>
         </div>
       </div>
 

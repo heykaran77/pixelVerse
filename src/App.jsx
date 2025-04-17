@@ -12,6 +12,7 @@ import ProductDetails from "./components/ProductDetails";
 import PixelEditor from "./components/PixelEditor";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Profile from "./components/Profile";
 import { AuthProvider } from "./context/AuthContext";
 
 // Import weapon images
@@ -2266,6 +2267,7 @@ function App() {
                 </>
               }
             />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
       </AuthProvider>
