@@ -630,6 +630,150 @@ const ProductDetails = ({ allCards }) => {
           )}
         </div>
       </div>
+
+      {/* Leaderboards Section */}
+      <div className="mt-32">
+        <h2 className="text-3xl font-bold mb-12 text-light-text dark:text-dark-text">
+          Leaderboards
+        </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Top Collectors Leaderboard */}
+          <div className="pixel-borders p-6">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold text-light-text dark:text-dark-text">
+                Top Collectors
+              </h3>
+              <button className="text-light-primary dark:text-dark-primary hover:opacity-80 transition-opacity text-sm font-medium">
+                View All
+              </button>
+            </div>
+            <div className="space-y-4">
+              {[
+                { id: 1, name: "Collector #1", items: 42, value: "125.5" },
+                { id: 2, name: "Collector #2", items: 38, value: "98.2" },
+                { id: 3, name: "Collector #3", items: 35, value: "87.4" },
+                { id: 4, name: "Collector #4", items: 31, value: "76.8" },
+                { id: 5, name: "Collector #5", items: 28, value: "65.3" },
+              ].map((collector, index) => (
+                <div
+                  key={collector.id}
+                  className="flex items-center justify-between p-4 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer"
+                >
+                  <div className="flex items-center gap-4">
+                    <span
+                      className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
+                        index === 0
+                          ? "bg-yellow-500 text-black"
+                          : index === 1
+                          ? "bg-gray-300 text-black"
+                          : index === 2
+                          ? "bg-amber-600 text-black"
+                          : "bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300"
+                      }`}
+                    >
+                      {index + 1}
+                    </span>
+                    <div>
+                      <p className="font-bold text-light-text dark:text-dark-text">
+                        {collector.name}
+                      </p>
+                      <p className="text-sm text-light-muted dark:text-dark-muted">
+                        {collector.items} items
+                      </p>
+                    </div>
+                  </div>
+                  <p className="font-bold text-light-primary dark:text-dark-primary">
+                    {collector.value} ETH
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Top Arts Leaderboard */}
+          <div className="pixel-borders p-6">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold text-light-text dark:text-dark-text">
+                Top Arts
+              </h3>
+              <button className="text-light-primary dark:text-dark-primary hover:opacity-80 transition-opacity text-sm font-medium">
+                View All
+              </button>
+            </div>
+            <div className="space-y-4">
+              {[
+                {
+                  id: 1,
+                  name: "Legendary Dragon",
+                  artist: "Artist #12",
+                  value: "45.5",
+                  image: "/path/to/art1.png",
+                },
+                {
+                  id: 2,
+                  name: "Mystic Sword",
+                  artist: "Artist #8",
+                  value: "38.2",
+                  image: "/path/to/art2.png",
+                },
+                {
+                  id: 3,
+                  name: "Cyber Punk",
+                  artist: "Artist #15",
+                  value: "32.4",
+                  image: "/path/to/art3.png",
+                },
+                {
+                  id: 4,
+                  name: "Golden Armor",
+                  artist: "Artist #5",
+                  value: "28.8",
+                  image: "/path/to/art4.png",
+                },
+                {
+                  id: 5,
+                  name: "Crystal Staff",
+                  artist: "Artist #20",
+                  value: "25.3",
+                  image: "/path/to/art5.png",
+                },
+              ].map((art, index) => (
+                <div
+                  key={art.id}
+                  className="flex items-center justify-between p-4 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer"
+                >
+                  <div className="flex items-center gap-4">
+                    <span
+                      className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
+                        index === 0
+                          ? "bg-yellow-500 text-black"
+                          : index === 1
+                          ? "bg-gray-300 text-black"
+                          : index === 2
+                          ? "bg-amber-600 text-black"
+                          : "bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300"
+                      }`}
+                    >
+                      {index + 1}
+                    </span>
+                    <div>
+                      <p className="font-bold text-light-text dark:text-dark-text">
+                        {art.name}
+                      </p>
+                      <p className="text-sm text-light-muted dark:text-dark-muted">
+                        by {art.artist}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="font-bold text-light-primary dark:text-dark-primary">
+                    {art.value} ETH
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
