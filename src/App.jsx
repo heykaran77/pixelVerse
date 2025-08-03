@@ -13,8 +13,7 @@ import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import { AuthProvider } from "./context/AuthContext";
 import ScrollToTop from "./components/ScrollToTop";
-import { Analytics } from "@vercel/analytics/next";
-
+import { Analytics } from "@vercel/analytics/react";
 // Import weapon images
 import DiamondSword from "./assets/gifs/Weapons/Diamond Sword.gif";
 import AngelAxe from "./assets/gifs/Weapons/Angel Axe.gif";
